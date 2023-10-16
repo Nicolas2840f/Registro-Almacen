@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::view('/reset','resetPassword')->name("reset");
+Route::view('/register','registerUser')->name("register");

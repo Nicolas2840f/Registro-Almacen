@@ -2,20 +2,20 @@
     title="Login"
     meta-description="Login meta description"
 >
-    
+<body style="background: #075985">        
     <div class="w-full flex justify-center">
         <div class="table w-1/3 bg-sky-600 text-center my-20 rounded-md shadow-xl shadow-slate-950/50">
             <h1 class="titulo-principal text-slate-50">Bienvenido</h1>
             <div class="w-full flex justify-center">
                 <form action ="" method="POST">
-                    <input class="w-5/6 p-3 rounded-md m-2" type="number" placeholder="Identificación" name="fDocumento">
-                    <input class="w-5/6 p-3 rounded-md m-2" type="Password" placeholder="Contraseña" name="fPassword">
+                    <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="number" placeholder="Identificación" name="fDocumento">
+                    <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="Password" placeholder="Contraseña" name="fPassword">
                     <button class="w-5/6 p-3 rounded-md m-2 bg-sky-200 font-medium hover:text-slate-50 hover:bg-sky-800" type="submit">Login</button>
                     <div class="w-full text-slate-50 links">
-                        <a href="#" class="hover:underline hover:text-sky-100">¿Perdiste tu Contraseña?</a>
+                        <a href="{{route('reset')}}" class="hover:underline hover:text-sky-100">¿Perdiste tu Contraseña?</a>
                     </div>
                     <div class="w-full pb-12 text-slate-50 links">
-                        <a href="#" class="hover:text-sky-100">¿No tienes Cuenta?
+                        <a href="{{route('register')}}" class="hover:text-sky-100">¿No tienes Cuenta?
                             <label style="cursor: pointer" class="hover:underline">Registrate</label>
                         </a>
                     </div>
@@ -24,5 +24,5 @@
             
         </div>
     </div>
-
+</body>
 </x-layouts.app>

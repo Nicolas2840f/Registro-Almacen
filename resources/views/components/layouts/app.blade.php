@@ -8,8 +8,5 @@
     <title>{{$title}}</title>
     @vite(['resources/css/app.scss','resources/js/app.js'])
 </head>
-<body>
-    {{$slot}}
-    
-</body>
+{{$slot}}
 </html>
