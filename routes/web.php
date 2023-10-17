@@ -18,8 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::resource('usuario', UsuarioController::class, [
-    'names' => 'usuarios',
+    'names' => 'usuario',
     'parameters' => ['usuario' =>  'usuario'],
 ]);
 
