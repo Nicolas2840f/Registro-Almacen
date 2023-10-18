@@ -14,17 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome');
 
 
-Route::resource('usuario', UsuarioController::class, [
-    'names' => 'usuario',
-    'parameters' => ['usuario' =>  'usuario'],
-]);
+// Route::resource('usuario', UsuarioController::class, [
+//     'names' => 'usuario',
+//     'parameters' => ['usuario' =>  'usuario'],
+// ]);
 
 
 
 Route::view('/reset','resetPassword')->name("reset");
 Route::view('/register','registerUser')->name("register");
+Route::view('/login','welcome')->name("login");
