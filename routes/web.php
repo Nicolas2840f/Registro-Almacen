@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterUsuarioController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,8 @@ Route::view('/', 'welcome');
 //     'names' => 'usuario',
 //     'parameters' => ['usuario' =>  'usuario'],
 // ]);
+
+Route::post('/register',[RegisterUsuarioController::class, 'store'])->name('usuario.store');
 
 
 
