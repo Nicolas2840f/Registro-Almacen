@@ -8,9 +8,10 @@
             <h1 class="titulo-principal text-slate-50">Bienvenido</h1>
             <div class="w-full flex justify-center">
                 <form action ="{{ route('usuario.store') }}" method="POST">
-                    <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="number" placeholder="Identificación" name="fDocumento">
-                    <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="Password" placeholder="Contraseña" name="fPassword">
-                    <button class="w-5/6 p-3 rounded-md m-2 bg-sky-200 font-medium hover:text-slate-50 hover:bg-sky-800" type="submit">Login</button>
+                    <input id="fDocumento" class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="number" placeholder="Identificación" name="fDocumento">
+                    <div id="msj1"></div>
+                    <input id="fPassword" class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="Password" placeholder="Contraseña" name="fPassword">
+                    <button id="fEnviar" class="w-5/6 p-3 rounded-md m-2 bg-sky-200 font-medium hover:text-slate-50 hover:bg-sky-800" type="submit">Login</button>
                     <div class="w-full text-slate-50 links">
                         <a href="{{route('reset')}}" class="hover:underline hover:text-sky-100">¿Perdiste tu Contraseña?</a>
                     </div>
