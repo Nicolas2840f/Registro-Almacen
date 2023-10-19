@@ -41,7 +41,7 @@
                             </div>
                         @enderror
                         <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="Password"
-                            placeholder="Contraseña" name="fPassword"  value="{{ old('fPassword') }}">
+                            placeholder="Contraseña" name="fPassword">
                         @error('fPassword')
                             <div>
                                 {{ $message }}
