@@ -14,8 +14,8 @@ class RegisterUsuarioController extends Controller
             'fTipoDocumento' => ['required', 'string'],
             'fDocumento' => ['required', 'string', 'min:7', 'unique:usuarios,documentoUsuarios'],
             'fNombre' => ['required', 'string', 'max:100'],
-            'fTelefono' => ['required', 'string', 'max:10', 'min:10'],
-            'fCorreo' => ['required', 'string', 'email'],
+            'fTelefono' => ['required', 'string', 'max:10', 'min:10','unique:usuarios,telefonoUsuario'],
+            'fCorreo' => ['required', 'string', 'email','unique:usuarios,correoUsuario'],
             'fPassword' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
