@@ -1,0 +1,1 @@
+<nav class="border-solid border-b-2 w-full flex justify-start pl-2" style="background: white;"><img class="w-1/6" src="/Imagenes/logo-NicoFer.png" alt="logo"></nav>

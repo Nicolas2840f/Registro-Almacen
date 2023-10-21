@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\Usuario;
 use Illuminate\Validation\Rules;
 
 class RegisterUsuarioController extends Controller
@@ -20,13 +20,13 @@ class RegisterUsuarioController extends Controller
         ]);
 
 
-        Usuario::create([
+        User::create([
             'tipoDocumentoUsuarios' => $request->fTipoDocumento,
             'documentoUsuarios' => $request->fDocumento,
             'nombreUsuarios' => $request->fNombre,
             'telefonoUsuarios' => $request->fTelefono,
             'correoUsuarios' => $request->fCorreo,
-            'contraseñaUsuarios' => bcrypt($request->fPassword),
+            'passwordUsuarios' => bcrypt($request->fPassword),
         ]);
 
         return to_route('login');

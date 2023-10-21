@@ -1,28 +1,29 @@
 <x-layouts.app
 title="Recuperar Contraseña"
 >
-<body style="background: #f8fafc">
-    <nav class="border-solid border-b-2 w-full flex justify-start pl-2" style="background: white;"><img class="w-1/6" src="/Imagenes/logo-NicoFer.png" alt="logo"></nav>
+<body style="background: #075985">
     <div class="w-full flex justify-center align-center text-center">
-        <div class="w-1/3 border-solid border-2 border-zinc-200 m-20" style="background: white;">
+        <div class="table w-1/3 bg-sky-600 text-center my-20 rounded-md shadow-xl shadow-slate-950/50">
             <div class="w-full flex justify-center"><img class="w-1/4 m-4" src="/Imagenes/candado.png" alt="candado"></div>
-            <h1 class="text-2xl font-semibold m-2">¿Tienes problemas para Iniciar Sesión?</h1>
-            <div class="text-zinc-600 m-2"> 
+            <h1 class="text-2xl font-semibold mb-4 mt-4 text-slate-50 tituloReset">¿Tienes problemas para Iniciar Sesión?</h1>
+            <div class="text-zinc-50 mb-4 mt-4  font-medium">
                 <p>Ingresa tu correo electrónico</p>
-                <p>y te enviaremos un enlace</p>
+                <p>y te enviaremos un código</p>
                 <p>para que recuperes el acceso a tu cuenta</p>
             </div>
             <div class="w-full flex justify-center">
-               <form action="">
-                <input class="w-4/5 m-2 bg-stone-200 p-2 rounded-md border-solid border-2 border-stone-300 text-center focus:outline-none caja2" type="text" placeholder="Ingresa tu correo electrónico">
-                <button class="w-4/5 m-2 bg-sky-500 text-slate-50 p-1 rounded-md font-semibold hover:bg-sky-600">Enviar enlace de inicio de sesión</button>  
-            </form> 
+               <form action="" method="POST">
+                <input class="w-3/5 p-3 rounded-md mb-4 mt-4 focus:outline-none caja" type="text" placeholder="Ingresa tu correo electrónico">
+                <button class="w-3/5 p-3 rounded-md bg-sky-200 font-medium hover:text-slate-50 hover:bg-sky-800 mb-12">Enviar código para recuperar acceso</button>
+            </form>
             </div>
-            
-            
-            <p>---------------o---------------</p>
-            <a href="#">Crear cuenta nueva</a>
-            <a href="#">Volver al inicio de sesión</a>
+            <div class="flex justify-center items-center mb-4"><hr class="w-1/3"><p class="w-1/6 text-zinc-50 font-medium">O</p><hr class="w-1/3"></div>
+            <div class="text-zinc-50 font-medium links mb-20">
+                <a href="{{route('register')}}">Crear cuenta nueva</a>
+            </div>
+            <div class="text-zinc-50 font-medium p-4 border-solid border-t-2 border-slate-50">
+                <a href="{{route('login')}}">Volver al inicio de sesión</a>
+            </div>
         </div>
     </div>
 </body>
