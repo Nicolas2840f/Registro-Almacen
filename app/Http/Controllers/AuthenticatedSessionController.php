@@ -13,7 +13,7 @@ class AuthenticatedSessionController extends Controller
         $credentials = $request->validate(
             [
                 'documentoUsuarios' => ['required', 'string', 'min:7'],
-                'passwordUsuarios' => ['required', 'string'],
+                'password' => ['required', 'string'],
             ]
         );
 
@@ -23,7 +23,7 @@ class AuthenticatedSessionController extends Controller
                 ->with('status', 'Ingresado con Éxito');
         } else {
             throw ValidationException::withMessages([
-                'documentoUsuarios' => 'El documento no se encuentra registrado en nuestro sistema'
+                'documentoUsuarios' => __("auth.failed")
             ]);
         }
     }

@@ -24,11 +24,11 @@ Route::view('/', 'welcome');
 //     'parameters' => ['usuario' =>  'usuario'],
 // ]);
 
-Route::post('/register',[RegisterUsuarioController::class, 'store'])->name('usuario.store');
-Route::post('/login',[AuthenticatedSessionController::class,'store'])->name('login.store');
+Route::post('/register', [RegisterUsuarioController::class, 'store'])->name('usuario.store');
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
 
 
-Route::view('/reset','resetPassword')->name("reset");
-Route::view('/register','registerUser')->name("register");
-Route::view('/login','welcome')->name("login");
-Route::view('/main','mainView')->name("mainView");
+Route::view('/reset', 'resetPassword')->name("reset");
+Route::view('/register', 'registerUser')->name("register");
+Route::view('/login', 'welcome')->name("login");
+Route::view('/main', 'mainView')->name("mainView");

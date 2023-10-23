@@ -14,9 +14,9 @@ class RegisterUsuarioController extends Controller
             'fTipoDocumento' => ['required', 'string'],
             'fDocumento' => ['required', 'string', 'min:7', 'unique:usuarios,documentoUsuarios'],
             'fNombre' => ['required', 'string', 'max:100'],
-            'fTelefono' => ['required', 'string', 'max:10', 'min:10','unique:usuarios,telefonoUsuario'],
-            'fCorreo' => ['required', 'string', 'email','unique:usuarios,correoUsuario'],
-            'fPassword' => ['required', 'confirmed', Rules\Password::defaults()],
+            'fTelefono' => ['required', 'string', 'max:10', 'min:10','unique:usuarios,telefonoUsuarios'],
+            'fCorreo' => ['required', 'string', 'email','unique:usuarios,correoUsuarios'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
 
@@ -26,7 +26,7 @@ class RegisterUsuarioController extends Controller
             'nombreUsuarios' => $request->fNombre,
             'telefonoUsuarios' => $request->fTelefono,
             'correoUsuarios' => $request->fCorreo,
-            'passwordUsuarios' => bcrypt($request->fPassword),
+            'password' => bcrypt($request->fPassword),
         ]);
 
         return to_route('login');
