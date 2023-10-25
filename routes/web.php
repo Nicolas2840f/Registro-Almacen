@@ -31,4 +31,4 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('l
 Route::view('/reset', 'resetPassword')->name("reset");
 Route::view('/register', 'registerUser')->name("register");
 Route::view('/login', 'welcome')->name("login");
-Route::view('/main', 'mainView')->name("mainView")->middleware('auth');
+Route::view('/main', 'mainView')->name("mainView");

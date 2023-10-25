@@ -1,3 +1,3 @@
 <x-layouts.app>
-    <p>Bienvenido, {{ $user }}</p>
+    <p>Bienvenido, {{ Auth::user() }}</p>
 </x-layouts.app>

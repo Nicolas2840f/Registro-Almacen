@@ -8,5 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Rol extends Model
 {
     use HasFactory;
-    protected $guarded = [];
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 
@@ -16,17 +16,17 @@ class RegisterUsuarioController extends Controller
             'fNombre' => ['required', 'string', 'max:100'],
             'fTelefono' => ['required', 'string', 'max:10', 'min:10','unique:usuarios,telefonoUsuarios'],
             'fCorreo' => ['required', 'string', 'email','unique:usuarios,correoUsuarios'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed'],
         ]);
 
 
-        User::create([
+        Usuario::create([
             'tipoDocumentoUsuarios' => $request->fTipoDocumento,
             'documentoUsuarios' => $request->fDocumento,
             'nombreUsuarios' => $request->fNombre,
             'telefonoUsuarios' => $request->fTelefono,
             'correoUsuarios' => $request->fCorreo,
-            'password' => bcrypt($request->fPassword),
+            'password' => bcrypt($request->password),
         ]);
 
         return to_route('login');
