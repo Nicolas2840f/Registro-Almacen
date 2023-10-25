@@ -8,34 +8,36 @@
                     <form action ="{{ route('usuario.store') }}" method="POST">
                         @csrf
                         <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="text"
-                            placeholder="Nombre" name="fNombre" value="{{ old('fNombre') }}">
-                        @error('fNombre')
+                            placeholder="Nombre" name="nombreUsuario" value="{{ old('nombreUsuario') }}">
+                        @error('nombreUsuario')
                             <div>
                                 {{ $message }}
                             </div>
                         @enderror
-                        <select class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" name="fTipoDocumento" id="" value="{{ old('fTipoDocumento') }}">
-                            <option value="0">Seleccione una opción</option>
-                            <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
-                            <option value="Cedula de extranjeria">Cedula de extranjeria</option>
+                        <select class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" name="tipoDocumentoUsuario"
+                            id="" value="{{ old('tipoDocumentoUsuario') }}">
+                            @foreach ($tipoDocumentos as $tipoDocumento)
+                                <option value="{{ $tipoDocumento->idTipoDocumento }}">
+                                    {{ $tipoDocumento->descripcionTipoDocumento }}</option>
+                            @endforeach
                         </select>
                         <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="number"
-                            placeholder="Identificación" name="fDocumento" value="{{ old('fDocumento') }}">
-                        @error('fDocumento')
+                            placeholder="Identificación" name="documentoUsuario" value="{{ old('documentoUsuario') }}">
+                        @error('documentoUsuario')
                             <div>
                                 {{ $message }}
                             </div>
                         @enderror
                         <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="number"
-                            placeholder="Telefono" name="fTelefono" value="{{ old('fTelefono') }}">
-                        @error('fTelefono')
+                            placeholder="Telefono" name="telefonoUsuario" value="{{ old('telefonoUsuario') }}">
+                        @error('telefonoUsuario')
                             <div>
                                 {{ $message }}
                             </div>
                         @enderror
                         <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="mail"
-                            placeholder="Correo" name="fCorreo" value="{{ old('fCorreo') }}">
-                        @error('fCorreo')
+                            placeholder="Correo" name="correoUsuario" value="{{ old('correoUsuario') }}">
+                        @error('correoUsuario')
                             <div>
                                 {{ $message }}
                             </div>

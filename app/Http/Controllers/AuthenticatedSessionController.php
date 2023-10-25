@@ -12,14 +12,11 @@ class AuthenticatedSessionController extends Controller
     {
 
         $credentials = $request->validate([
-            'documentoUsuarios' => ['required', 'string'],
+            'documentoUsuario' => ['required', 'string'],
             'password' => ['required', 'string'],
         ]);
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 3b1ead381db3ddf696fe737d41e1488fb9036a24
         if (!Auth::attempt($credentials)) {
             throw ValidationException::withMessages([
                 'password' => __("auth.failed"),
@@ -27,10 +24,6 @@ class AuthenticatedSessionController extends Controller
         }
 
         $request->session()->regenerate();
-<<<<<<< HEAD
         return redirect()->route('mainView');
-=======
-        return redirect()->intended(route('mainView'));
->>>>>>> 3b1ead381db3ddf696fe737d41e1488fb9036a24
     }
 }

@@ -8,12 +8,12 @@
                     <form action ="{{ route('login.store') }}" method="POST">
                         @csrf
                         <input id="fDocumento" class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="text"
-                            placeholder="Identificación" name="documentoUsuarios" value="{{ old('documentoUsuarios') }}"
+                            placeholder="Identificación" name="documentoUsuario" value="{{ old('documentoUsuario') }}"
                             required minlength="8">
-                        @error('documentoUsuarios')
+                        @error('documentoUsuario')
                             {{ $message }}
                         @enderror
-                        <input id="fPassword" class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="Password"
+                        <input id="fpassword" class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="password"
                             placeholder="Contraseña" name="password" required>
                         @error('password')
                             {{ $message }}

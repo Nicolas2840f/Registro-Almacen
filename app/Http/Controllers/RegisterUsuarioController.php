@@ -11,21 +11,21 @@ class RegisterUsuarioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'fTipoDocumento' => ['required', 'string'],
-            'fDocumento' => ['required', 'string', 'min:7', 'unique:usuarios,documentoUsuarios'],
-            'fNombre' => ['required', 'string', 'max:100'],
-            'fTelefono' => ['required', 'string', 'max:10', 'min:10','unique:usuarios,telefonoUsuarios'],
-            'fCorreo' => ['required', 'string', 'email','unique:usuarios,correoUsuarios'],
+            'tipoDocumentoUsuario' => ['required', 'string'],
+            'documentoUsuario' => ['required', 'string', 'min:7', 'unique:usuarios'],
+            'nombreUsuario' => ['required', 'string', 'max:100'],
+            'telefonoUsuario' => ['required', 'string', 'max:10', 'min:10','unique:usuarios'],
+            'correoUsuario' => ['required', 'string', 'email','unique:usuarios'],
             'password' => ['required', 'confirmed'],
         ]);
 
 
         Usuario::create([
-            'tipoDocumentoUsuarios' => $request->fTipoDocumento,
-            'documentoUsuarios' => $request->fDocumento,
-            'nombreUsuarios' => $request->fNombre,
-            'telefonoUsuarios' => $request->fTelefono,
-            'correoUsuarios' => $request->fCorreo,
+            'tipoDocumentoUsuario' => $request->tipoDocumentoUsuario,
+            'documentoUsuario' => $request->documentoUsuario,
+            'nombreUsuario' => $request->nombreUsuario,
+            'telefonoUsuario' => $request->telefonoUsuario,
+            'correoUsuario' => $request->correoUsuario,
             'password' => bcrypt($request->password),
         ]);
 

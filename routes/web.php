@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RegisterUsuarioController;
 use App\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\tipoDocumentoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,6 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('l
 
 
 Route::view('/reset', 'resetPassword')->name("reset");
-Route::view('/register', 'registerUser')->name("register");
+Route::get('/register', [tipoDocumentoController::class, 'index'])->name("register");
 Route::view('/login', 'welcome')->name("login");
 Route::view('/main', 'mainView')->name("mainView");

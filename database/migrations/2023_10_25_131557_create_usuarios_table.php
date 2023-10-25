@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('tipoDocumentoUsuario');
             $table->string('documentoUsuario');
             $table->string('nombreUsuario');
-            $table->unsignedBigInteger('rolUsuario');
+            $table->unsignedBigInteger('rolUsuario')->default(1);
             $table->string('telefonoUsuario');
             $table->string('correoUsuario');
             $table->string('password');
