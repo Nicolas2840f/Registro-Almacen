@@ -1,3 +1,6 @@
-<x-layouts.app>
-    <p>Bienvenido, {{ $user }}</p>
-</x-layouts.app>
+@auth
+    {{ Auth::user()->nombreUsuarios }}
+@endauth
+@guest
+asd
+@endguest

@@ -10,19 +10,18 @@ class AuthenticatedSessionController extends Controller
 {
     public function store(Request $request)
     {
+
         $credentials = $request->validate([
             'documentoUsuarios' => ['required', 'string', 'min:7'],
             'password' => ['required', 'string'],
         ]);
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return view('mainView', ['user' => Auth::user()])
-                ->with('status', 'Ingresado con Éxito');
-        } else {
+        if (!Auth::attempt($credentials)) {
             throw ValidationException::withMessages([
-                'documentoUsuarios' => __("auth.failed")
+                'password' => __("auth.failed"),
             ]);
         }
+
+        $request->session()->regenerate();
+        return redirect()->intended(route('mainView'));
     }
 }
