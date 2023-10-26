@@ -30,7 +30,7 @@ class ForgotPasswordController extends Controller
 
     public function showResetForm()
     {
-        return view('auth.passwords.reset');
+        return view('/login');
     }
 
     public function resetPassword(Request $request)
