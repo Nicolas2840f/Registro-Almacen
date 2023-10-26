@@ -19,7 +19,7 @@ class Usuario extends Authenticatable
      */
     protected $guarded = [];
 
-    protected $primaryKey = 'idusuario';
+    protected $primaryKey = 'idUsuario';
 
     /**
      * The attributes that should be hidden for serialization.

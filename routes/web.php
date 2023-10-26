@@ -32,4 +32,4 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('l
 Route::view('/reset', 'resetPassword')->name("reset");
 Route::get('/register', [tipoDocumentoController::class, 'index'])->name("register");
 Route::view('/login', 'welcome')->name("login");
-Route::view('/main', 'mainView')->name("mainView");
+Route::view('/main', 'mainView')->name("mainView")->middleware('auth');

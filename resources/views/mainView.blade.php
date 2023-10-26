@@ -1,6 +1,4 @@
-@auth
-    {{ Auth::user() }}
-@endauth
-@guest
-    asd
-@endguest
+<x-layouts.app title="MainView" meta-description="MainView">
+{{ Auth::user() }}
+</x-layouts.app>
+
