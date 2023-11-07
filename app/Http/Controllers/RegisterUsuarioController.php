@@ -15,7 +15,7 @@ class RegisterUsuarioController extends Controller
             'documentoUsuario' => ['required', 'string', 'min:7', 'unique:usuarios'],
             'nombreUsuario' => ['required', 'string', 'max:100'],
             'telefonoUsuario' => ['required', 'string', 'max:10', 'min:10','unique:usuarios'],
-            'correoUsuario' => ['required', 'string', 'email','unique:usuarios'],
+            'email' => ['required', 'string', 'email','unique:usuarios'],
             'password' => ['required', 'confirmed'],
         ]);
 
@@ -25,7 +25,7 @@ class RegisterUsuarioController extends Controller
             'documentoUsuario' => $request->documentoUsuario,
             'nombreUsuario' => $request->nombreUsuario,
             'telefonoUsuario' => $request->telefonoUsuario,
-            'correoUsuario' => $request->correoUsuario,
+            'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
 

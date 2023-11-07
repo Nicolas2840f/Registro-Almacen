@@ -35,9 +35,9 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                        <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="mail"
-                            placeholder="Correo" name="correoUsuario" value="{{ old('correoUsuario') }}">
-                        @error('correoUsuario')
+                        <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="email"
+                            placeholder="Correo" name="email" value="{{ old('email') }}">
+                        @error('email')
                             <div>
                                 {{ $message }}
                             </div>
