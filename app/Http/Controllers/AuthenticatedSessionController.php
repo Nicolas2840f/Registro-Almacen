@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rol;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -22,8 +24,6 @@ class AuthenticatedSessionController extends Controller
                 'password' => __("auth.failed"),
             ]);
         }
-
-        $request->session()->regenerate();
         return redirect()->route('mainView');
     }
 }
