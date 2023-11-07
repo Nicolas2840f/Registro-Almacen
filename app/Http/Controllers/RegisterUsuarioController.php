@@ -29,7 +29,7 @@ class RegisterUsuarioController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        return to_route('login');
+        return to_route('login')->with('status', 'Cuenta creada');
 
         // return $request;
 

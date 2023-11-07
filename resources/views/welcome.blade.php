@@ -4,6 +4,9 @@
         <div class="w-full flex justify-center">
             <div class="table w-1/3 bg-sky-600 text-center my-20 rounded-md shadow-xl shadow-slate-950/50">
                 <h1 class="titulo-principal text-slate-50">Bienvenido</h1>
+                @if (session('status'))
+                    {{ session('status') }}
+                @endif
                 <div class="w-full flex justify-center">
                     <form action ="{{ route('login.store') }}" method="POST">
                         @csrf
