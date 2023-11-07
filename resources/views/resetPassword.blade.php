@@ -15,8 +15,8 @@
                 <div class="w-full flex justify-center">
                     <form action="{{ route('password.send') }}" method="POST">
                         @csrf
-                        <input class="w-3/5 p-3 rounded-md mb-4 mt-4 focus:outline-none caja" type="text"
-                            placeholder="Ingresa tu correo electrónico" name="correoUsuario">
+                        <input class="w-3/5 p-3 rounded-md mb-4 mt-4 focus:outline-none caja" type="email"
+                            placeholder="Ingresa tu correo electrónico" name="email">
                         @error('email')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror

@@ -14,18 +14,18 @@ class ForgotPasswordController extends Controller
     public function sendResetLink(Request $request)
     {
         $this->validate($request, [
-            'correoUsuario' => 'required|email',
+            'email' => 'required|email',
         ]);
 
         $status = Password::sendResetLink(
-            $request->only('correoUsuario')
+            $request->only('email')
         );
 
         if ($status === Password::RESET_LINK_SENT) {
             return redirect()->route('password.verify');
         }
 
-        return back()->withErrors(['correoUsuario' => __($status)]);
+        return back()->withErrors(['email' => __($status)]);
     }
 
     public function showResetForm()
