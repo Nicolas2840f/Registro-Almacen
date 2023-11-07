@@ -31,7 +31,7 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('l
 
 Route::middleware(['web'])->group(function () {
     Route::post('/reset', [ForgotPasswordController::class, 'sendResetLink'])->name('password.send');
-    Route::get('/password.reset', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::view('/confirmation','codeConfirmation')->name('password.verify');
     Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
 
 });
