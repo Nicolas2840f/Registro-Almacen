@@ -1,4 +1,5 @@
 <x-layouts.app title="MainView" meta-description="MainView">
-{{ Auth::user() }}
+    {{ Auth::user()->rolUsuario }} ---- {{ Auth::user()->rol->descripcionRol }}
+    <br>
+    {{ Auth::user()->tipoDocumentoUsuario }} ---- {{ Auth::user()->tipoDocumento->descripcionTipoDocumento }}
 </x-layouts.app>
-
