@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ResetPasswordMail as MailResetPasswordMail;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
-
 
 class ForgotPasswordController extends Controller
 {
@@ -23,34 +24,34 @@ class ForgotPasswordController extends Controller
             return back()->withErrors(['email' => 'Usuario no encontrado']);
         }
 
-        $user->reset_code = Str::random(32); // Genera un código aleatorio
+        $resetCode = str_pad(rand(100000, 999999), 6, '0', STR_PAD_LEFT);
+        $user->reset_code = $resetCode;
         $user->save();
 
-        // Envía el código al usuario por correo, si es necesario
-        // Puedes usar Laravel's Mail para hacerlo.
+        // Envía el correo electrónico al usuario con el código de restablecimiento
+        Mail::to($user->email)->send(new MailResetPasswordMail($resetCode));
 
-        return redirect()->route('password.verify'); // Redirige a la vista donde el usuario ingresará el código.
+        return redirect()->route('password.verify', ['email' => $user->email]);
+
     }
-
     public function resetPassword(Request $request)
-{
-    $this->validate($request, [
-        'email' => 'required|email',
-        'password' => 'required|min:8|confirmed',
-        'reset_code' => 'required', // Campo para el código aleatorio.
-    ]);
+    {
+        $this->validate($request, [
+            'reset_code' => 'required|digits:6', // Validar que el código tenga exactamente 6 dígitos
+        ]);
 
-    $user = Usuario::where('email', $request->email)->first();
+        // Buscar al usuario con el código y obtener su correo
+        $user = Usuario::where('reset_code', $request->reset_code)->first();
 
-    if (!$user || $user->reset_code !== $request->reset_code) {
-        return back()->withErrors(['email' => 'Código de restablecimiento incorrecto']);
+        if (!$user || $user->reset_code !== $request->reset_code || $user->email !== $request->input('email')) {
+            return back()->withErrors(['reset_code' => 'Código de restablecimiento incorrecto']);
+        }
+
+        // Si el código es válido y el correo coincide, procede con el restablecimiento de la contraseña
+        return redirect()->route('password.reset', ['email' => $user->email]);
     }
 
-    $user->password = Hash::make($request->password);
-    $user->reset_code = null; // Borra el código después de restablecer la contraseña.
-    $user->save();
 
-    return redirect()->route('login')->with('status', 'Contraseña restablecida con éxito');
-}
+
 
 }

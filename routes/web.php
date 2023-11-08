@@ -6,6 +6,7 @@ use App\Http\Controllers\tipoDocumentoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,10 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('l
 
 Route::middleware(['web'])->group(function () {
     Route::post('/reset', [ForgotPasswordController::class, 'sendResetLink'])->name('password.send');
-    Route::view('/confirmation','codeConfirmation')->name('password.verify');
-    Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
-
+    Route::post('/code-confirmation', [ForgotPasswordController::class, 'resetPassword'])->name('password.code');
+    Route::view('/confirmation', 'codeConfirmation')->name('password.verify');
+    Route::get('/reset-password/{email}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/reset-password', [ResetPasswordController::class,'resetPassword'])->name('password.update');
 });
 
 
