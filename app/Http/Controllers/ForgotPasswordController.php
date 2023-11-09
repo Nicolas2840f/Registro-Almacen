@@ -37,11 +37,12 @@ class ForgotPasswordController extends Controller
     public function resetPassword(Request $request)
     {
         $this->validate($request, [
+            'email' => 'required',
             'reset_code' => 'required|digits:6', // Validar que el código tenga exactamente 6 dígitos
         ]);
 
         // Buscar al usuario con el código y obtener su correo
-        $user = Usuario::where('reset_code', $request->reset_code)->first();
+        $user = Usuario::where('email', $request->email)->first();
 
         if (!$user || $user->reset_code !== $request->reset_code || $user->email !== $request->input('email')) {
             return back()->withErrors(['reset_code' => 'Código de restablecimiento incorrecto']);

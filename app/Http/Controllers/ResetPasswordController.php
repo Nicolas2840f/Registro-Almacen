@@ -27,10 +27,6 @@ class ResetPasswordController extends Controller
             return back()->withErrors(['email' => 'Usuario no encontrado']);
         }
 
-        $this->validate($request, [
-            'password' => 'required|min:8|confirmed',
-        ]);
-
         $user->password = Hash::make($request->password);
         $user->save();
 
