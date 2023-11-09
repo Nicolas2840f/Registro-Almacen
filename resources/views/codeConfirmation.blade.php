@@ -7,9 +7,8 @@
                 </div>
                 <h1 class="text-2xl font-semibold mb-4 mt-4 text-slate-50 tituloReset">Restablecer Contraseña</h1>
                 <div class="text-zinc-50 mb-4 mt-4  font-medium">
-                    <p>Ingresa el código </p>
-                    <p>que te enviamos</p>
-                    <p> al correo que ingresaste</p>
+                    <p>Ingresa el código que te enviamos</p>
+                    <p> al correo que ingresaste, Recuerda revisar el spam</p>
                 </div>
                 <div class="w-full flex justify-center">
                     <form action="{{ route('password.code') }}" method="POST">

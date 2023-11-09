@@ -30,13 +30,12 @@ Route::view('/', 'welcome');
 Route::post('/register', [RegisterUsuarioController::class, 'store'])->name('usuario.store');
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
 
-Route::middleware(['web'])->group(function () {
+
     Route::post('/reset', [ForgotPasswordController::class, 'sendResetLink'])->name('password.send');
     Route::post('/code-reset', [ForgotPasswordController::class, 'resetPassword'])->name('password.code');
     Route::view('/confirmation', 'codeConfirmation')->name('password.verify');
     Route::get('/reset-password/{email}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('/reset-password', [ResetPasswordController::class,'resetPassword'])->name('password.update');
-});
 
 
 

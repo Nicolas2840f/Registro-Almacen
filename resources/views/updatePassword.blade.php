@@ -7,17 +7,17 @@
                     <form action ="{{ route('password.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="email" value="{{ request('email') }}">
-                        <input class="w-4/6 p-3 rounded-md m-2 focus:outline-none caja" type="Password"
+                        <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="Password"
                             placeholder="Contraseña" name="password">
                         @error('password')
                             <div>
                                 {{ $message }}
                             </div>
                         @enderror
-                        <input class="w-4/6 p-3 rounded-md m-2 focus:outline-none caja" type="Password"
+                        <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="Password"
                             placeholder="confirmar contraseña" name="password_confirmation">
                         <button
-                            class="w-4/6 p-3 rounded-md m-2 bg-sky-200 font-medium hover:text-slate-50 hover:bg-sky-800 mb-20"
+                            class="w-5/6 p-3 rounded-md m-2 bg-sky-200 font-medium hover:text-slate-50 hover:bg-sky-800 mb-20"
                             type="submit">Actualizar Contraseña</button>
                     </form>
                 </div>
