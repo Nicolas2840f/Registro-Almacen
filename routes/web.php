@@ -19,7 +19,7 @@ use App\Http\Controllers\ResetPasswordController;
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('welcome');
 
 
 // Route::resource('usuario', UsuarioController::class, [
@@ -31,16 +31,18 @@ Route::post('/register', [RegisterUsuarioController::class, 'store'])->name('usu
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
 
 
-    Route::post('/reset', [ForgotPasswordController::class, 'sendResetLink'])->name('password.send');
-    Route::post('/code-reset', [ForgotPasswordController::class, 'resetPassword'])->name('password.code');
-    Route::view('/confirmation', 'codeConfirmation')->name('password.verify');
-    Route::get('/reset-password/{email}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-    Route::post('/reset-password', [ResetPasswordController::class,'resetPassword'])->name('password.update');
-
-
-
+Route::post('/reset', [ForgotPasswordController::class, 'sendResetLink'])->name('password.send');
+Route::post('/code-reset', [ForgotPasswordController::class, 'resetPassword'])->name('password.code');
+Route::view('/confirmation', 'codeConfirmation')->name('password.verify');
+Route::get('/reset-password/{email}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->name('password.update');
 
 Route::view('/reset', 'resetPassword')->name("reset");
 Route::get('/register', [tipoDocumentoController::class, 'index'])->name("register");
 Route::view('/login', 'welcome')->name("login");
 Route::view('/main', 'mainView')->name("mainView")->middleware('auth');
+
+Route::view('/Registroentradas', 'registros.Registro')->name('RRegistro');
+Route::view('/HistorialRegistros', 'registros.HistorialRegistros')->name('HRegistro');
+Route::view('/portatiles', 'portatiles.CRUDPortatiles')->name('CRUDPortatiles');
+Route::get('/usuarios', [UsuarioController::class, 'index'])->name('Usuarios');

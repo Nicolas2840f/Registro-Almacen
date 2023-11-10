@@ -1,1 +1,9 @@
-<nav class="border-solid border-b-2 w-full flex justify-start pl-2" style="background: white;"><img class="w-1/6" src="/Imagenes/logo-NicoFer.png" alt="logo"></nav>
+<nav class="border-solid border-b-2 w-full h-16 flex justify-start pl-2" style="background: white;">
+    <a class="w-1/6" href="{{ route('mainView') }}">
+        <img class="w-full h-full" src="/Imagenes/logo-NicoFer.png" alt="logo">
+    </a>
+    @if (!request()->routeIs('login', 'welcome', 'reset', 'register', 'password.reset', 'password.verify'))
+        <x-layouts.nav />
+        <div style="width: 3%; margin-right: 5px" class="select-none cursor-pointer flex items-center justify-center text-4xl menu">☰</div>
+    @endif
+</nav>
