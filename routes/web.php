@@ -18,31 +18,24 @@ use App\Http\Controllers\ResetPasswordController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+// Routes register - login - welcome
 Route::view('/', 'welcome')->name('welcome');
-
-
-// Route::resource('usuario', UsuarioController::class, [
-//     'names' => 'usuario',
-//     'parameters' => ['usuario' =>  'usuario'],
-// ]);
-
 Route::post('/register', [RegisterUsuarioController::class, 'store'])->name('usuario.store');
+Route::get('/register', [tipoDocumentoController::class, 'index'])->name("register");
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
+Route::view('/login', 'welcome')->name("login");
 
-
+// Routes resetPassword
 Route::post('/reset', [ForgotPasswordController::class, 'sendResetLink'])->name('password.send');
 Route::post('/code-reset', [ForgotPasswordController::class, 'resetPassword'])->name('password.code');
 Route::view('/confirmation', 'codeConfirmation')->name('password.verify');
 Route::get('/reset-password/{email}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->name('password.update');
-
 Route::view('/reset', 'resetPassword')->name("reset");
-Route::get('/register', [tipoDocumentoController::class, 'index'])->name("register");
-Route::view('/login', 'welcome')->name("login");
-Route::view('/main', 'mainView')->name("mainView")->middleware('auth');
 
-Route::view('/Registroentradas', 'registros.Registro')->name('RRegistro');
-Route::view('/HistorialRegistros', 'registros.HistorialRegistros')->name('HRegistro');
-Route::view('/portatiles', 'portatiles.CRUDPortatiles')->name('CRUDPortatiles');
-Route::get('/usuarios', [UsuarioController::class, 'index'])->name('Usuarios');
+// Route navigation
+Route::view('/main', 'mainView')->name("mainView")->middleware('auth');
+Route::view('/Registroentradas', 'registros.Registro')->name('RRegistro')->middleware('auth');
+Route::view('/HistorialRegistros', 'registros.HistorialRegistros')->name('HRegistro')->middleware('auth');
+Route::view('/portatiles', 'portatiles.CRUDPortatiles')->name('CRUDPortatiles')->middleware('auth');
+Route::get('/usuarios', [UsuarioController::class, 'index'])->name('Usuarios')->middleware('auth');
