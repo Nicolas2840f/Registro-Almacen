@@ -8,5 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Portatil extends Model
 {
     protected $guarded = [];
+
+    protected $table = "Portatiles";
     use HasFactory;
 }

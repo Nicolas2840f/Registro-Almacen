@@ -2,63 +2,53 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Portatil;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class PortatilController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    private function checkDuplicateSerial($serialNumber)
     {
-        //
+        // Lógica para verificar si el número de serie ya existe en la base de datos
+        $existingPortatil = Portatil::where('númeroSeriePortatil', $serialNumber)->first();
+
+        // Si el número de serie existe, retornar true; de lo contrario, retornar false
+        return $existingPortatil !== null;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            "marcaPortatil" => ["required", "string"],
+            "especificacionesPortatil" => "",
+            "colorPortatil" => ["required", "string"],
+            "usuario" => ["required", "string"],
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        $user = Usuario::where('documentoUsuario', $request->usuario)->first();
+        if ($user) {
+            $numeroSerie = str_pad(rand(1, 99999999), 8, '0', STR_PAD_LEFT);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+            // Verificar si el número de serie ya existe
+            if ($this->checkDuplicateSerial($numeroSerie)) {
+                // Si ya existe, generar otro número y verificar nuevamente
+                do {
+                    $numeroSerie = str_pad(rand(1, 99999999), 8, '0', STR_PAD_LEFT);
+                } while ($this->checkDuplicateSerial($numeroSerie));
+            }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+            Portatil::create([
+                "marcaPortatil" => $request->marcaPortatil,
+                "númeroSeriePortatil" => $numeroSerie,
+                "especificacionesPortatil" => $request->especificacionesPortatil,
+                "colorPortatil" => $request->colorPortatil,
+                "usuario" => $user->idUsuario,
+            ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+            return redirect()->route("mainView")->with("status", "Portatil Registrado Exitosamente");
+        } else {
+            return back()->withInput()->withErrors(['usuario' => 'El usuario no está registrado']);
+        }
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\tipoDocumentoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\PortatilController;
 use App\Http\Controllers\ResetPasswordController;
 
 /*
@@ -39,3 +40,7 @@ Route::view('/Registroentradas', 'registros.Registro')->name('RRegistro')->middl
 Route::view('/HistorialRegistros', 'registros.HistorialRegistros')->name('HRegistro')->middleware('auth');
 Route::view('/portatiles', 'portatiles.CRUDPortatiles')->name('CRUDPortatiles')->middleware('auth');
 Route::get('/usuarios', [UsuarioController::class, 'index'])->name('Usuarios')->middleware('auth');
+
+
+//  Routes portatiles
+Route::post('/portatiles', [PortatilController::class,'store'])->name('portatil.store');
