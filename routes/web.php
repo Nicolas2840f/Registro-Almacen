@@ -39,3 +39,5 @@ Route::view('/Registroentradas', 'registros.Registro')->name('RRegistro')->middl
 Route::view('/HistorialRegistros', 'registros.HistorialRegistros')->name('HRegistro')->middleware('auth');
 Route::view('/portatiles', 'portatiles.CRUDPortatiles')->name('CRUDPortatiles')->middleware('auth');
 Route::get('/usuarios', [UsuarioController::class, 'index'])->name('Usuarios')->middleware('auth');
+
+Route::post('Buscar', [UsuarioController::class, 'buscarByDocument'])->name('buscar');

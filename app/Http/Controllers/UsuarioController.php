@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Portatil;
+use App\Models\Usuario;
+// use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
+
 
 class UsuarioController extends Controller
 {
@@ -64,4 +69,34 @@ class UsuarioController extends Controller
     {
         //
     }
+
+
+    public function buscarByDocument(Request $request)
+    {
+
+        $request->validate([
+            'documentoUsuario' => ['required', 'numeric']
+        ]);
+
+        $usuario = Usuario::where('documentoUsuario', 'like', '%' . $request->documentoUsuario . '%')->first();
+        if (!$usuario) {
+            throw ValidationException::withMessages([
+                'password' => __("auth.failed"),
+            ]);
+        }
+
+        $portatiles = Portatil::where('usuario', $usuario->idUsuario)->get();
+
+
+        if (count($portatiles) > 0) {
+            return redirect()->route('RRegistro')->with(['usuario' => $usuario, 'portatiles' => $portatiles]);
+        } else {
+            return redirect()->route('RRegistro')->with(['usuario' => $usuario, 'message' => 'El usuario no tiene portátiles']);
+        }
+
+
+        // return to_route('RRegistro')->with(['usuario' => $usuario, 'portatiles' => $portatiles]);
+
+    }
+
 }

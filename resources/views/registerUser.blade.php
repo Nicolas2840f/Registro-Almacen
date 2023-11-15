@@ -9,11 +9,6 @@
                         @csrf
                         <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="text"
                             placeholder="Nombre" name="nombreUsuario" value="{{ old('nombreUsuario') }}">
-                        @error('nombreUsuario')
-                            <div>
-                                {{ $message }}
-                            </div>
-                        @enderror
                         <select class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" name="tipoDocumentoUsuario"
                             id="" value="{{ old('tipoDocumentoUsuario') }}">
                             @foreach ($tipoDocumentos as $tipoDocumento)
@@ -23,37 +18,17 @@
                         </select>
                         <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="number"
                             placeholder="Identificación" name="documentoUsuario" value="{{ old('documentoUsuario') }}">
-                        @error('documentoUsuario')
-                            <div>
-                                {{ $message }}
-                            </div>
-                        @enderror
                         <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="number"
                             placeholder="Telefono" name="telefonoUsuario" value="{{ old('telefonoUsuario') }}">
-                        @error('telefonoUsuario')
-                            <div>
-                                {{ $message }}
-                            </div>
-                        @enderror
                         <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="email"
                             placeholder="Correo" name="email" value="{{ old('email') }}">
-                        @error('email')
-                            <div>
-                                {{ $message }}
-                            </div>
-                        @enderror
                         <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="Password"
                             placeholder="Contraseña" name="password">
-                        @error('password')
-                            <div>
-                                {{ $message }}
-                            </div>
-                        @enderror
                         <input class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="Password"
                             placeholder="confirmar contraseña" name="password_confirmation">
                         <button
                             class="w-5/6 p-3 rounded-md m-2 bg-sky-200 font-medium hover:text-slate-50 hover:bg-sky-800"
-                            type="submit">Login</button>
+                            type="submit">Crear</button>
                         <div class="w-full text-slate-50 links">
                             <a href="{{ route('reset') }}" class="hover:underline hover:text-sky-100">¿Perdiste tu
                                 Contraseña?</a>

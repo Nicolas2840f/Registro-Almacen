@@ -162,7 +162,7 @@ return [
         'description'              => 'descripción',
         'district'                 => 'distrito',
         'duration'                 => 'duración',
-        'email'                    => 'correo electrónico',
+        'email'                    => 'correo',
         'excerpt'                  => 'extracto',
         'filter'                   => 'filtro',
         'first_name'               => 'nombre',
@@ -213,5 +213,8 @@ return [
         'updated_at'               => 'actualizado el',
         'username'                 => 'usuario',
         'year'                     => 'año',
+        'nombreUsuario' => 'nombre',
+        'documentoUsuario'=> 'documento',
+        'telefonoUsuario'=> 'telefono',
     ],
 ];

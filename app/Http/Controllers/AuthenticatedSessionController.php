@@ -14,7 +14,7 @@ class AuthenticatedSessionController extends Controller
     {
 
         $credentials = $request->validate([
-            'documentoUsuario' => ['required', 'string'],
+            'documentoUsuario' => ['required', 'string', 'min:8'],
             'password' => ['required', 'string'],
         ]);
 
@@ -24,6 +24,6 @@ class AuthenticatedSessionController extends Controller
                 'password' => __("auth.failed"),
             ]);
         }
-        return redirect()->route('mainView');
+        return redirect()->route('mainView')->with('status', __("auth.login"));
     }
 }

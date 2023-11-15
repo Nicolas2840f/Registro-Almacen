@@ -2,35 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
+body {
     height: 100vh;
 }
 
-.titulo-principal{
+.titulo-principal {
     font-size: 50px;
     padding: 40px;
     text-shadow: 3px 1px 4px #0ea5e9;
 }
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
-.links{
+.links {
     text-shadow: 3px 1px 4px #0ea5e9;
     padding-top: 2px;
 }
-.caja:focus{
+.caja:focus {
     box-shadow: 1px 2px 4px 2px #082f49;
 }
-.invalido{
+.invalido {
     box-shadow: 1px 0.5px 5px 2.5px #f43f5e;
 }
-.tituloReset{
+.tituloReset {
     text-shadow: 3px 1px 4px rgb(0, 0, 0);
 }

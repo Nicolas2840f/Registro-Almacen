@@ -4,6 +4,7 @@
     </a>
     @if (!request()->routeIs('login', 'welcome', 'reset', 'register', 'password.reset', 'password.verify'))
         <x-layouts.nav />
-        <div style="width: 3%; margin-right: 5px" class="select-none cursor-pointer flex items-center justify-center text-4xl menu">☰</div>
+        <div class="contenedor_menu select-none cursor-pointer flex items-center justify-center text-4xl menu">
+        </div>
     @endif
 </nav>

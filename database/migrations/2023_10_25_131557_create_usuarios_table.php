@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->string('telefonoUsuario');
             $table->string('email');
             $table->string('password');
-            $table->string('reset_code');
+            $table->string('reset_code')->nullable();
             $table->timestamps();
 
 

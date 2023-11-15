@@ -16,7 +16,7 @@ class RegisterUsuarioController extends Controller
             'nombreUsuario' => ['required', 'string', 'max:100'],
             'telefonoUsuario' => ['required', 'string', 'max:10', 'min:10','unique:usuarios'],
             'email' => ['required', 'string', 'email','unique:usuarios'],
-            'password' => ['required', 'confirmed'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
 
