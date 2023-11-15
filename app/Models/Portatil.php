@@ -9,7 +9,6 @@ class Portatil extends Model
 {
     protected $guarded = [];
 
-    protected $table = "Portatiles";
     use HasFactory;
     protected $table = "portatiles";
 }
