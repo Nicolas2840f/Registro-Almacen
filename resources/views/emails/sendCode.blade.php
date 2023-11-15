@@ -15,6 +15,7 @@
         }
 
         .caja {
+            padding: 2%;
             display: table;
             background-color: #0284c7;
             border-radius: 5px;
@@ -24,7 +25,6 @@
         .titulo {
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             font-size: 60px;
-            margin: 1.5%;
             font-weight: 500;
             color: white;
             text-shadow: 3px 1px 4px black;
@@ -49,7 +49,6 @@
             text-shadow: 3px 1px 4px black;
             font-size: 30px;
 
-        }
         }
     </style>
 </head>

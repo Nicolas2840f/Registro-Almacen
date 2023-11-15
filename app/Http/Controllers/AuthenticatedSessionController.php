@@ -24,6 +24,12 @@ class AuthenticatedSessionController extends Controller
                 'password' => __("auth.failed"),
             ]);
         }
+        // if(!Auth::user()->rolUsuario != 1) {
+        //     return re
+        // }
+        if(Auth::user()->rolUsuario == 1){
+            return back()->with("status",'No tienes permiso');
+        };
         return redirect()->route('mainView');
     }
 }
