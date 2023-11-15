@@ -26,8 +26,6 @@
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             font-size: 60px;
             font-weight: 500;
-            margin-bottom: 2%;
-            margin-top: 2%;
             color: white;
             text-shadow: 3px 1px 4px black;
         }
@@ -39,7 +37,7 @@
         }
 
         .input {
-            margin: 2%;
+            margin-top: 2%;
             width: 100%;
             padding: 10px;
             border-radius: 5px;

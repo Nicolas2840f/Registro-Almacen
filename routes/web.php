@@ -6,6 +6,7 @@ use App\Http\Controllers\tipoDocumentoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\PortatilController;
 use App\Http\Controllers\ResetPasswordController;
 
 /*
@@ -40,4 +41,10 @@ Route::view('/HistorialRegistros', 'registros.HistorialRegistros')->name('HRegis
 Route::view('/portatiles', 'portatiles.CRUDPortatiles')->name('CRUDPortatiles')->middleware('auth');
 Route::get('/usuarios', [UsuarioController::class, 'index'])->name('Usuarios')->middleware('auth');
 
+<<<<<<< HEAD
 Route::post('Buscar', [UsuarioController::class, 'buscarByDocument'])->name('buscar');
+=======
+
+//  Routes portatiles
+Route::post('/portatiles', [PortatilController::class,'store'])->name('portatil.store');
+>>>>>>> 6512aa09c6d5f91bacf429b165e74ef1492da772
