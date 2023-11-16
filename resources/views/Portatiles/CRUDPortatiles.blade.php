@@ -45,7 +45,7 @@
                         <label class="font-semibold text-2xl">Identificación del Dueño</label>
                         <br>
                         <input class="rounded border mt-2 mb-2 p-1 w-2/3" type="number" placeholder="Ej: 63436531"
-                            name="usuario">
+                            name="usuario" value="{{ old('documentoUsuario', $usuario->documentoUsuario) }}">
                         @error('usuario')
                             <br>
                             {{ $message }}

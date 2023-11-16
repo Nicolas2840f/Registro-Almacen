@@ -17,6 +17,11 @@ class PortatilController extends Controller
         return $existingPortatil !== null;
     }
 
+    public function create(Usuario $usuario)
+    {
+        return view('Portatiles.CRUDPortatiles', ['usuario' => $usuario]);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -46,7 +51,7 @@ class PortatilController extends Controller
                 "usuario" => $user->idUsuario,
             ]);
 
-            return redirect()->route("mainView")->with("status", "Portatil Registrado Exitosamente");
+            return redirect()->route("RRegistro")->with("status", "Portatil Registrado Exitosamente");
         } else {
             return back()->withInput()->withErrors(['usuario' => 'El usuario no está registrado']);
         }

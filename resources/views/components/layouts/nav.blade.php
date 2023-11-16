@@ -5,8 +5,8 @@
                 href="{{ route('RRegistro') }}">Entrada</a>
             <a class="hover:text-blue-600 {{ request()->routeIs('HRegistro') ? 'text-blue-600' : 'text-black' }}"
                 href="{{ route('HRegistro') }}">Historial entradas</a>
-            <a class="hover:text-blue-600 {{ request()->routeIs('CRUDPortatiles') ? 'text-blue-600' : 'text-black' }}"
-                href="{{ route('CRUDPortatiles') }}">Portatiles</a>
+            <a class="hover:text-blue-600 {{ request()->routeIs('create.portatil') ? 'text-blue-600' : 'text-black' }}"
+                href="{{ route('create.portatil') }}">Portatiles</a>
         @endif
         @if (Auth::user()->rolUsuario == 3)
             <a class="hover:text-blue-600 {{ request()->routeIs('Usuarios') ? 'text-blue-600' : 'text-black' }}"

@@ -33,6 +33,18 @@ input[type="number"]::-webkit-outer-spin-button {
 .tituloReset {
     text-shadow: 3px 1px 4px rgb(0, 0, 0);
 }
-.principal{
+.principal {
     box-shadow: 1px 1px 20px 3px #082f49;
+}
+
+.contenedor__tabla {
+    box-shadow: 0px 5px 9px -5px black;
+
+    table,
+    th,
+    tr,
+    td {
+        border: 1px solid black;
+        padding: 0.2rem 0;
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Portatil;
+use App\Models\Registro;
 use App\Models\Usuario;
 // use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
@@ -86,10 +87,14 @@ class UsuarioController extends Controller
         }
 
         $portatiles = Portatil::where('usuario', $usuario->idUsuario)->get();
-
+        $registros = Registro::where('usuario', $usuario->idUsuario)->get();
 
         if (count($portatiles) > 0) {
-            return redirect()->route('RRegistro')->with(['usuario' => $usuario, 'portatiles' => $portatiles]);
+            if(count($registros) > 0){
+                return redirect()->route('RRegistro')->with(['usuario' => $usuario, 'portatiles' => $portatiles, 'registros'=> $registros]);
+            }else{
+                return redirect()->route('RRegistro')->with(['usuario' => $usuario, 'portatiles' => $portatiles, 'messageR'=> 'No hay registros']);
+            }
         } else {
             return redirect()->route('RRegistro')->with(['usuario' => $usuario, 'message' => 'El usuario no tiene portátiles']);
         }

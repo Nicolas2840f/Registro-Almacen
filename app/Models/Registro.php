@@ -9,4 +9,15 @@ class Registro extends Model
 {
     protected $guarded = [];
     use HasFactory;
+
+
+
+    public function usuarioR()
+    {
+        return $this->hasOne(Usuario::class, 'idUsuario', 'usuario');
+    }
+    public function portatilR()
+    {
+        return $this->hasOne(Portatil::class, 'idPortatil', 'portatil');
+    }
 }

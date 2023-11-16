@@ -38,15 +38,12 @@ Route::view('/reset', 'resetPassword')->name("reset");
 Route::view('/main', 'mainView')->name("mainView")->middleware('auth');
 Route::view('/Registroentradas', 'registros.Registro')->name('RRegistro')->middleware('auth');
 Route::view('/HistorialRegistros', 'registros.HistorialRegistros')->name('HRegistro')->middleware('auth');
-Route::view('/portatiles', 'portatiles.CRUDPortatiles')->name('CRUDPortatiles')->middleware('auth');
+
+// Routes Usuarios
 Route::get('/usuarios', [UsuarioController::class, 'index'])->name('Usuarios')->middleware('auth');
-
-<<<<<<< HEAD
-
 Route::post('Buscar', [UsuarioController::class, 'buscarByDocument'])->name('buscar');
 
 //  Routes portatiles
-Route::post('/portatiles', [PortatilController::class,'store'])->name('portatil.store');
-=======
-Route::post('Buscar', [UsuarioController::class, 'buscarByDocument'])->name('buscar');
->>>>>>> 4fd11237d751d04f59b6bd3131531efd140ffb5b
+Route::view('/portatiles/create','portatiles')->name('create.portatil')->middleware('auth');
+Route::get('/portatiles/{usuario}', [PortatilController::class, 'create'])->name('create.portatil.user')->middleware('auth');
+Route::post('/portatiles/create', [PortatilController::class,'store'])->name('portatil.store');
