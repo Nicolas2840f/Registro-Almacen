@@ -20,7 +20,7 @@ class UsuarioController extends Controller
     {
         $usuarios = DB::table("usuarios")->get();
 
-        return view("usuarios.Usuarios", ['usuarios' => $usuarios]);
+        return view("usuarios.index", ['usuarios' => $usuarios]);
     }
 
     /**
@@ -92,7 +92,7 @@ class UsuarioController extends Controller
         $portatiles = Portatil::where('usuario', $usuario->idUsuario)->get();
         $registros = Registro::where('usuario', $usuario->idUsuario)->orderBy('idRegistro', 'desc')->get();
 
-        return view('Registros.Registro')->with(['usuario' => $usuario, 'portatiles'=> $portatiles, 'registros'=> $registros]);
+        return view('Registros.create')->with(['usuario' => $usuario, 'portatiles'=> $portatiles, 'registros'=> $registros]);
 
     }
 

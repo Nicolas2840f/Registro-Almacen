@@ -9,6 +9,8 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PortatilController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\RolController;
+use App\Models\TipoDocumento;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +22,11 @@ use App\Http\Controllers\ResetPasswordController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 // Routes register - login - welcome
 Route::view('/', 'welcome')->name('welcome');
 Route::post('/register', [RegisterUsuarioController::class, 'store'])->name('usuario.store');
-Route::get('/register', [tipoDocumentoController::class, 'index'])->name("register");
+Route::get('/register', [tipoDocumentoController::class, 'listarSelect'])->name("register");
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
 Route::view('/login', 'welcome')->name("login");
 
@@ -35,20 +38,33 @@ Route::get('/reset-password/{email}', [ResetPasswordController::class, 'showRese
 Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->name('password.update');
 Route::view('/reset', 'resetPassword')->name("reset");
 
-// Route navigation
-Route::view('/main', 'mainView')->name("mainView")->middleware('auth');
-Route::view('/Registroentradas', 'registros.Registro')->name('RRegistro')->middleware('auth');
-Route::view('/HistorialRegistros', 'registros.HistorialRegistros')->name('HRegistro')->middleware('auth');
 
-// Routes Usuarios
-Route::get('/usuarios', [UsuarioController::class, 'index'])->name('Usuarios')->middleware('auth');
-Route::post('/buscar.usuario', [UsuarioController::class, 'buscarByDocumento'])->name('buscar.usuario');
+// Rutas protegidas por middleware auth
+Route::middleware(['auth'])->group(function () {
 
-//  Routes portatiles
-Route::view('/portatiles/create','Portatiles.CRUDPortatiles')->name('create.portatil')->middleware('auth');
-Route::get('/portatiles/{usuario}', [PortatilController::class, 'create'])->name('create.portatil.user')->middleware('auth');
-Route::post('/portatiles/create', [PortatilController::class,'store'])->name('portatil.store');
+    // Route navigation
+    Route::view('/main', 'mainView')->name("main.index");
+    Route::view('/Registroentradas', 'Registros.create')->name('registro.create');
+    Route::view('/HistorialRegistros', 'registros.index')->name('registro.index');
 
-// Route Registro
-Route::post('/registro', [RegistroController::class,'store'])->name('registro.store');
-Route::post('/registro/update', [RegistroController::class,'update'])->name('registro.update');
+    // Routes Usuarios
+    Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuario.index');
+    Route::post('/buscar.usuario', [UsuarioController::class, 'buscarByDocumento'])->name('usuario.buscar');
+    Route::view('/edit', 'usuarios.update')->name('user.edit');
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('user.logout');
+
+    //  Routes portatiles
+    Route::view('/portatiles/create', 'Portatiles.create')->name('portatil.create');
+    Route::get('/portatiles/{usuario}', [PortatilController::class, 'create'])->name('portatil.user.create');
+    Route::post('/portatiles/create', [PortatilController::class, 'store'])->name('portatil.store');
+    Route::get('/portatiles', [PortatilController::class, 'index'])->name('portatil.index');
+
+    // Route Registro
+    Route::post('/registro', [RegistroController::class, 'store'])->name('registro.store');
+    Route::post('/registro/update', [RegistroController::class, 'update'])->name('registro.update');
+
+    // Route Complementos
+    Route::get('/complementos/roles', [RolController::class, 'index'])->name('rol.index');
+    Route::get('/complementos/tipoDocumento', [tipoDocumentoController::class, 'index'])->name('tipoDocumento.index');
+
+});

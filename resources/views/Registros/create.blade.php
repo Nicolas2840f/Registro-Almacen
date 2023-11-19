@@ -7,7 +7,7 @@
             </div>
             <div class="main bg-white w-[100%] h-[90%] rounded-2xl p-5">
                 <div class="w-full h-[10%] flex items-center content-center">
-                    <form class="w-full h-4/5 flex items-center" action="{{ route('buscar.usuario') }}" method="POST">
+                    <form class="w-full h-4/5 flex items-center" action="{{ route('usuario.buscar') }}" method="POST">
                         @csrf
                         <div class="flex flex-row h-full w-full">
                             <input required class="h-full border w-full rounded px-3 focus:outline"

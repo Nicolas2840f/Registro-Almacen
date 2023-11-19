@@ -1,11 +1,5 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
 
-.contenedor_menu {
-    width: 3%;
-    margin-right: 5px;
-}
-
-
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -32,13 +26,12 @@
     }
 }
 
-@keyframes loader{
-    from{
+@keyframes loader {
+    from {
         width: 0;
     }
 
-    to{
+    to {
         width: 100%;
     }
-
 }

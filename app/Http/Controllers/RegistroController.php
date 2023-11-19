@@ -37,7 +37,7 @@ class RegistroController extends Controller
         $lastRegistro = Registro::latest()->first();
 
         if ($lastRegistro && $lastRegistro->fechaSalidaRegistro == null) {
-            return redirect()->route('RRegistro')->withErrors([
+            return redirect()->route('registro.create')->withErrors([
                 'documentoUsuario'=> 'No hay registro de ultima salida',
             ]);
         }
@@ -48,7 +48,7 @@ class RegistroController extends Controller
             'fechaIngresoRegistro' => NOW(),
         ]);
 
-        return to_route('RRegistro')->with('status', 'Ingreso Registrado');
+        return to_route('registro.create')->with('status', 'Ingreso Registrado');
 
     }
 
@@ -84,7 +84,7 @@ class RegistroController extends Controller
         $lastRegistro = Registro::latest()->first();
 
         if ($lastRegistro && $lastRegistro->fechaIngresoRegistro != null && $lastRegistro->fechaSalidaRegistro != null) {
-            return redirect()->route('RRegistro')->withErrors([
+            return redirect()->route('registro.create')->withErrors([
                 'documentoUsuario'=> 'No hay registro de ingreso',
             ]);
         }
@@ -93,7 +93,7 @@ class RegistroController extends Controller
             "fechaSalidaRegistro" => NOW(),
         ]);
 
-        return to_route('RRegistro')->with('status', 'Salida Registrada');
+        return to_route('registro.create')->with('status', 'Salida Registrada');
     }
 
     /**
