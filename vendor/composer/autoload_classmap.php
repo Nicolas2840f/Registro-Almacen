@@ -10,6 +10,7 @@ return array(
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AuthenticatedSessionController' => $baseDir . '/app/Http/Controllers/AuthenticatedSessionController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/ForgotPasswordController.php',
     'App\\Http\\Controllers\\PortatilController' => $baseDir . '/app/Http/Controllers/PortatilController.php',
     'App\\Http\\Controllers\\RegisterUsuarioController' => $baseDir . '/app/Http/Controllers/RegisterUsuarioController.php',
     'App\\Http\\Controllers\\RegistroController' => $baseDir . '/app/Http/Controllers/RegistroController.php',

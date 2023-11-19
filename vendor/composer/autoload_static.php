@@ -579,6 +579,7 @@ class ComposerStaticInit19b90fe7ab51009879ed247c953c4647
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AuthenticatedSessionController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthenticatedSessionController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/ForgotPasswordController.php',
         'App\\Http\\Controllers\\PortatilController' => __DIR__ . '/../..' . '/app/Http/Controllers/PortatilController.php',
         'App\\Http\\Controllers\\RegisterUsuarioController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegisterUsuarioController.php',
         'App\\Http\\Controllers\\RegistroController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegistroController.php',
