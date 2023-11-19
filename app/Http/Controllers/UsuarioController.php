@@ -72,35 +72,27 @@ class UsuarioController extends Controller
     }
 
 
-    public function buscarByDocument(Request $request)
+    public function buscarByDocumento(Request $request)
     {
 
         $request->validate([
-            'documentoUsuario' => ['required', 'numeric']
+            'documentoUsuarioS' => ['required', 'numeric']
         ]);
 
-        $usuario = Usuario::where('documentoUsuario', 'like', '%' . $request->documentoUsuario . '%')->first();
-        if (!$usuario) {
+
+        $usuario = Usuario::where('documentoUsuario', 'like', '%' . $request->documentoUsuarioS . '%')->first();
+
+        if(!isset($usuario)){
             throw ValidationException::withMessages([
-                'password' => __("auth.failed"),
+                'documentoUsuarioS' => 'Usuario no encontrado',
             ]);
         }
 
+
         $portatiles = Portatil::where('usuario', $usuario->idUsuario)->get();
-        $registros = Registro::where('usuario', $usuario->idUsuario)->get();
+        $registros = Registro::where('usuario', $usuario->idUsuario)->orderBy('idRegistro', 'desc')->get();
 
-        if (count($portatiles) > 0) {
-            if(count($registros) > 0){
-                return redirect()->route('RRegistro')->with(['usuario' => $usuario, 'portatiles' => $portatiles, 'registros'=> $registros]);
-            }else{
-                return redirect()->route('RRegistro')->with(['usuario' => $usuario, 'portatiles' => $portatiles, 'messageR'=> 'No hay registros']);
-            }
-        } else {
-            return redirect()->route('RRegistro')->with(['usuario' => $usuario, 'message' => 'El usuario no tiene portátiles']);
-        }
-
-
-        // return to_route('RRegistro')->with(['usuario' => $usuario, 'portatiles' => $portatiles]);
+        return view('Registros.Registro')->with(['usuario' => $usuario, 'portatiles'=> $portatiles, 'registros'=> $registros]);
 
     }
 

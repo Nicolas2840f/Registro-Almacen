@@ -19,11 +19,11 @@
                         <br>
                         <input class="rounded border mt-2 mb-2 p-1 w-2/3" type="text" name="marcaPortatil"
                             placeholder="Ej: Hp, Lenovo.,etc." value="{{ old('marcaPortatil') }}">
-                        @error('marcaPortatil')
+                        {{-- @error('marcaPortatil')
                             <br>
                             {{ $message }}
                             <br>
-                        @enderror
+                        @enderror --}}
                         <br>
                         <label class="font-semibold text-2xl">Especificaciones del Portátil(Opcional)</label>
                         <br>
@@ -36,21 +36,21 @@
                         <input class="rounded border mt-2 mb-2 p-1 w-2/3" type="text"
                             placeholder="Ej: Gris,Azul,Blanco,etc." name="colorPortatil"
                             value="{{ old('colorPortatil') }}">
-                        @error('colorPortatil')
+                        {{-- @error('colorPortatil')
                             <br>
                             {{ $message }}
                             <br>
-                        @enderror
+                        @enderror --}}
                         <br>
                         <label class="font-semibold text-2xl">Identificación del Dueño</label>
                         <br>
                         <input class="rounded border mt-2 mb-2 p-1 w-2/3" type="number" placeholder="Ej: 63436531"
-                            name="usuario" value="{{ old('documentoUsuario', $usuario->documentoUsuario) }}">
-                        @error('usuario')
+                            name="usuario" value="{{ old('documentoUsuario', isset($usuario) ? $usuario->documentoUsuario : '') }}">
+                        {{-- @error('usuario')
                             <br>
                             {{ $message }}
                             <br>
-                        @enderror
+                        @enderror --}}
                         <br>
                         <div class="flex justify-center mt-6">
                             <button class="bg-sky-800 p-2 rounded-md w-1/3 text-slate-50 font-semibold hover:bg-sky-950" type="submit">Enviar</button>

@@ -10,6 +10,7 @@ class Registro extends Model
     protected $guarded = [];
     use HasFactory;
 
+    protected $primaryKey = "idRegistro";
 
 
     public function usuarioR()

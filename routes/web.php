@@ -7,6 +7,7 @@ use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PortatilController;
+use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\ResetPasswordController;
 
 /*
@@ -41,9 +42,13 @@ Route::view('/HistorialRegistros', 'registros.HistorialRegistros')->name('HRegis
 
 // Routes Usuarios
 Route::get('/usuarios', [UsuarioController::class, 'index'])->name('Usuarios')->middleware('auth');
-Route::post('Buscar', [UsuarioController::class, 'buscarByDocument'])->name('buscar');
+Route::post('/buscar.usuario', [UsuarioController::class, 'buscarByDocumento'])->name('buscar.usuario');
 
 //  Routes portatiles
-Route::view('/portatiles/create','portatiles')->name('create.portatil')->middleware('auth');
+Route::view('/portatiles/create','Portatiles.CRUDPortatiles')->name('create.portatil')->middleware('auth');
 Route::get('/portatiles/{usuario}', [PortatilController::class, 'create'])->name('create.portatil.user')->middleware('auth');
 Route::post('/portatiles/create', [PortatilController::class,'store'])->name('portatil.store');
+
+// Route Registro
+Route::post('/registro', [RegistroController::class,'store'])->name('registro.store');
+Route::post('/registro/update', [RegistroController::class,'update'])->name('registro.update');
