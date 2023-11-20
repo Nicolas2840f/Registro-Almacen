@@ -1,5 +1,5 @@
 @if ($errors->any() || session('status'))
-    @vite(['resources/js/nav-modal.js', 'resources/css/nav-modal.scss']);
+    @vite(['resources/js/nav-modal.js', 'resources/css/nav-modal.scss'])
     <div class="contendor__alerts  bg-transparent fixed top-24 right-0 flex flex-col items-end">
         @if ($errors->any())
             @foreach ($errors->all() as $error)

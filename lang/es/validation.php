@@ -215,6 +215,8 @@ return [
         'year'                     => 'año',
         'nombreUsuario' => 'nombre',
         'documentoUsuario'=> 'documento',
+        'documentoUsuarioS'=> 'documento',
         'telefonoUsuario'=> 'telefono',
+        'idUsuario'=> '',
     ],
 ];

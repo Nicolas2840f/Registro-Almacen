@@ -5,9 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Portatil;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PortatilController extends Controller
 {
+
+    public function index(){
+        $portatiles = DB::table("portatiles")->get();
+
+        return view("Portatiles.index", ["portatiles"=> $portatiles]);
+    }
+
+
     private function checkDuplicateSerial($serialNumber)
     {
         // Lógica para verificar si el número de serie ya existe en la base de datos
@@ -15,6 +24,11 @@ class PortatilController extends Controller
 
         // Si el número de serie existe, retornar true; de lo contrario, retornar false
         return $existingPortatil !== null;
+    }
+
+    public function create(Usuario $usuario)
+    {
+        return view('Portatiles.create', ['usuario' => $usuario]);
     }
 
     public function store(Request $request)
@@ -46,7 +60,7 @@ class PortatilController extends Controller
                 "usuario" => $user->idUsuario,
             ]);
 
-            return redirect()->route("mainView")->with("status", "Portatil Registrado Exitosamente");
+            return redirect()->route("registro.registrar")->with("status", "Portatil Registrado Exitosamente");
         } else {
             return back()->withInput()->withErrors(['usuario' => 'El usuario no está registrado']);
         }

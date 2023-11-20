@@ -12,6 +12,13 @@ class tipoDocumentoController extends Controller
 
         $tipoDocumentos = DB::table("tipoDocumentos")->get();
 
+        return view("tipoDocumentos.index", ['tipoDocumentos' => $tipoDocumentos]);
+    }
+
+    public function listarSelect()
+    {
+        $tipoDocumentos = DB::table("tipoDocumentos")->get();
+
         return view("registerUser", ['tipoDocumentos' => $tipoDocumentos]);
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class RolController extends Controller
 {
@@ -11,7 +13,9 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
+        $roles = DB::table("roles")->get();
+
+        return view('roles.index', ['roles' => $roles]);
     }
 
     /**

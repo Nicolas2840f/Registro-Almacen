@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Portatil;
+use App\Models\Registro;
 use App\Models\Usuario;
 // use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class UsuarioController extends Controller
     {
         $usuarios = DB::table("usuarios")->get();
 
-        return view("usuarios.Usuarios", ['usuarios' => $usuarios]);
+        return view("usuarios.index", ['usuarios' => $usuarios]);
     }
 
     /**
@@ -71,31 +72,27 @@ class UsuarioController extends Controller
     }
 
 
-    public function buscarByDocument(Request $request)
+    public function buscarByDocumento(Request $request)
     {
 
         $request->validate([
-            'documentoUsuario' => ['required', 'numeric']
+            'documentoUsuarioS' => ['required', 'numeric']
         ]);
 
-        $usuario = Usuario::where('documentoUsuario', 'like', '%' . $request->documentoUsuario . '%')->first();
-        if (!$usuario) {
+
+        $usuario = Usuario::where('documentoUsuario', 'like', '%' . $request->documentoUsuarioS . '%')->first();
+
+        if(!isset($usuario)){
             throw ValidationException::withMessages([
-                'password' => __("auth.failed"),
+                'documentoUsuarioS' => 'Usuario no encontrado',
             ]);
         }
 
+
         $portatiles = Portatil::where('usuario', $usuario->idUsuario)->get();
+        $registros = Registro::where('usuario', $usuario->idUsuario)->orderBy('idRegistro', 'desc')->get();
 
-
-        if (count($portatiles) > 0) {
-            return redirect()->route('RRegistro')->with(['usuario' => $usuario, 'portatiles' => $portatiles]);
-        } else {
-            return redirect()->route('RRegistro')->with(['usuario' => $usuario, 'message' => 'El usuario no tiene portátiles']);
-        }
-
-
-        // return to_route('RRegistro')->with(['usuario' => $usuario, 'portatiles' => $portatiles]);
+        return view('Registros.create')->with(['usuario' => $usuario, 'portatiles'=> $portatiles, 'registros'=> $registros]);
 
     }
 
