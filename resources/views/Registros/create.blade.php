@@ -52,7 +52,7 @@
                                 <span>
                                     El usuario No tiene Portatil,
                                     <a class="text-blue-500 underline hover:text-blue-700"
-                                        href="{{ route($usuario ? 'create.portatil.user' : 'create.portatil', $usuario) }}">Registrar?</a>
+                                        href="{{ route('portatil.user.create', $usuario) }}">Registrar?</a>
                                 </span>
                             @endif
 
