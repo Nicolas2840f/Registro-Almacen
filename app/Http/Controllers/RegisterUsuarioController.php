@@ -15,8 +15,8 @@ class RegisterUsuarioController extends Controller
             'documentoUsuario' => ['required', 'string', 'min:7', 'unique:usuarios'],
             'nombreUsuario' => ['required', 'string', 'max:100'],
             'telefonoUsuario' => ['required', 'string', 'max:10', 'min:10','unique:usuarios'],
-            'correoUsuario' => ['required', 'string', 'email','unique:usuarios'],
-            'password' => ['required', 'confirmed'],
+            'email' => ['required', 'string', 'email','unique:usuarios'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
 
@@ -25,11 +25,11 @@ class RegisterUsuarioController extends Controller
             'documentoUsuario' => $request->documentoUsuario,
             'nombreUsuario' => $request->nombreUsuario,
             'telefonoUsuario' => $request->telefonoUsuario,
-            'correoUsuario' => $request->correoUsuario,
+            'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
 
-        return to_route('login');
+        return to_route('login')->with('status', 'Cuenta creada');
 
         // return $request;
 

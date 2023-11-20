@@ -17,8 +17,9 @@ return new class extends Migration {
             $table->string('nombreUsuario');
             $table->unsignedBigInteger('rolUsuario')->default(1);
             $table->string('telefonoUsuario');
-            $table->string('correoUsuario');
+            $table->string('email');
             $table->string('password');
+            $table->string('reset_code')->nullable();
             $table->timestamps();
 
 

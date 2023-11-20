@@ -4,20 +4,18 @@
         <div class="w-full flex justify-center">
             <div class="table w-1/3 bg-sky-600 text-center my-20 rounded-md shadow-xl shadow-slate-950/50">
                 <h1 class="titulo-principal text-slate-50">Bienvenido</h1>
+                {{-- @if (session('status'))
+                    {{ session('status') }}
+                @endif --}}
+
                 <div class="w-full flex justify-center">
                     <form action ="{{ route('login.store') }}" method="POST">
                         @csrf
                         <input id="fDocumento" class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="text"
                             placeholder="Identificación" name="documentoUsuario" value="{{ old('documentoUsuario') }}"
                             required minlength="8">
-                        @error('documentoUsuario')
-                            {{ $message }}
-                        @enderror
                         <input id="fpassword" class="w-5/6 p-3 rounded-md m-2 focus:outline-none caja" type="password"
                             placeholder="Contraseña" name="password" required>
-                        @error('password')
-                            {{ $message }}
-                        @enderror
                         <button id="fEnviar"
                             class="w-5/6 p-3 rounded-md m-2 bg-sky-200 font-medium hover:text-slate-50 hover:bg-sky-800"
                             type="submit">Login</button>

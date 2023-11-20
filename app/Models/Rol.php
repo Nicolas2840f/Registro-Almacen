@@ -9,4 +9,6 @@ class Rol extends Model
 {
     protected $guarded = [];
     use HasFactory;
+    protected $primaryKey = 'idRol';
+    protected $table = 'roles';
 }

@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Portatil;
+use App\Models\Registro;
+use App\Models\Usuario;
+// use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
+
 
 class UsuarioController extends Controller
 {
@@ -11,7 +18,9 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = DB::table("usuarios")->get();
+
+        return view("usuarios.index", ['usuarios' => $usuarios]);
     }
 
     /**
@@ -61,4 +70,30 @@ class UsuarioController extends Controller
     {
         //
     }
+
+
+    public function buscarByDocumento(Request $request)
+    {
+
+        $request->validate([
+            'documentoUsuarioS' => ['required', 'numeric']
+        ]);
+
+
+        $usuario = Usuario::where('documentoUsuario', 'like', '%' . $request->documentoUsuarioS . '%')->first();
+
+        if(!isset($usuario)){
+            throw ValidationException::withMessages([
+                'documentoUsuarioS' => 'Usuario no encontrado',
+            ]);
+        }
+
+
+        $portatiles = Portatil::where('usuario', $usuario->idUsuario)->get();
+        $registros = Registro::where('usuario', $usuario->idUsuario)->orderBy('idRegistro', 'desc')->get();
+
+        return view('Registros.create')->with(['usuario' => $usuario, 'portatiles'=> $portatiles, 'registros'=> $registros]);
+
+    }
+
 }

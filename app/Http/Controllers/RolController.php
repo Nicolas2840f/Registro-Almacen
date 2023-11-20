@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rol;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RolController extends Controller
 {
@@ -11,7 +14,9 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
+        $roles = DB::table("roles")->get();
+
+        return view('roles.index', ['roles' => $roles]);
     }
 
     /**
@@ -19,7 +24,6 @@ class RolController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -27,7 +31,17 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'descripcionRol' => 'required'
+        ]);
+        // Ejecutar la consulta SQL para reiniciar el contador de autoincremento a 1
+        DB::statement('ALTER TABLE roles AUTO_INCREMENT = 1');
+
+        Rol::create([
+            'descripcionRol' => $request->descripcionRol
+
+        ]);
+        return to_route('rol.index')->with('status', 'Rol Registrado con éxito');
     }
 
     /**
@@ -49,16 +63,37 @@ class RolController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'descripcion' => 'required'
+        ]);
+        $id = $request->idRol;
+        $rol = Rol::find($id);
+        $rol->update([
+            'descripcionRol' => $request->descripcion
+        ]);
+
+        return redirect()->route('rol.index')->with('status', 'Rol Modificado con éxito');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        // Verificar si el rol está siendo utilizado por algún usuario
+        $rolEnUso = Usuario::where('rolUsuario', $id)->exists();
+
+        if ($rolEnUso) {
+            // Si el rol está en uso, redireccionar con un mensaje de error
+            return redirect()->route('rol.index')->with('status', 'No se puede eliminar el rol porque está siendo utilizado por usuarios.');
+        }
+
+        // Si el rol no está siendo utilizado, proceder con la eliminación
+        Rol::destroy($id);
+
+        // Redireccionar con un mensaje de éxito
+        return redirect()->route('rol.index')->with('status', 'Rol Eliminado con éxito');
     }
 }
