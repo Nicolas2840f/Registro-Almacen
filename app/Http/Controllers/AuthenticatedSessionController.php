@@ -24,9 +24,6 @@ class AuthenticatedSessionController extends Controller
                 'password' => __("auth.failed"),
             ]);
         }
-<<<<<<< HEAD
-        return redirect()->route('mainView')->with('status', __("auth.login"));
-=======
         // if(!Auth::user()->rolUsuario != 1) {
         //     return re
         // }
@@ -34,6 +31,5 @@ class AuthenticatedSessionController extends Controller
             return back()->with("status",'No tienes permiso');
         };
         return redirect()->route('mainView');
->>>>>>> 6512aa09c6d5f91bacf429b165e74ef1492da772
     }
 }

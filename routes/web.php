@@ -41,12 +41,8 @@ Route::view('/HistorialRegistros', 'registros.HistorialRegistros')->name('HRegis
 Route::view('/portatiles', 'portatiles.CRUDPortatiles')->name('CRUDPortatiles')->middleware('auth');
 Route::get('/usuarios', [UsuarioController::class, 'index'])->name('Usuarios')->middleware('auth');
 
-<<<<<<< HEAD
 
 Route::post('Buscar', [UsuarioController::class, 'buscarByDocument'])->name('buscar');
 
 //  Routes portatiles
 Route::post('/portatiles', [PortatilController::class,'store'])->name('portatil.store');
-=======
-Route::post('Buscar', [UsuarioController::class, 'buscarByDocument'])->name('buscar');
->>>>>>> 4fd11237d751d04f59b6bd3131531efd140ffb5b
