@@ -44,7 +44,7 @@
             <ul class="flex flex-col w-full p-0 m-0">
                 <li class="list-none my-1 mx-0 text-center">
                     <a class="text-black cursor-pointer hover:text-blue-700 transition-colors duration-300"
-                        href="">Registrar</a>
+                        href="{{ route('register') }}">Registrar</a>
                 </li>
                 <li class="list-none my-1 mx-0 text-center">
                     <a class="text-black cursor-pointer hover:text-blue-700 transition-colors duration-300

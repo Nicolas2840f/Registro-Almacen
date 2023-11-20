@@ -24,15 +24,6 @@ class AuthenticatedSessionController extends Controller
                 'password' => __("auth.failed"),
             ]);
         }
-<<<<<<< HEAD
-        // if(!Auth::user()->rolUsuario != 1) {
-        //     return re
-        // }
-        if(Auth::user()->rolUsuario == 1){
-            return back()->with("status",'No tienes permiso');
-        };
-        return redirect()->route('mainView');
-=======
 
         if(Auth::user()->rolUsuario == 1){
             return back()->with("status",'No tienes permiso');
@@ -48,6 +39,5 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return to_route('login')->with('status', 'Cerraste sesión correctamente');
->>>>>>> 4fc8dbaedf16577683c3992b978495035854bf6d
     }
 }

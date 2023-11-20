@@ -39,21 +39,14 @@ Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword']
 Route::view('/reset', 'resetPassword')->name("reset");
 
 
-<<<<<<< HEAD
-=======
 // Rutas protegidas por middleware auth
 Route::middleware(['auth'])->group(function () {
->>>>>>> 4fc8dbaedf16577683c3992b978495035854bf6d
 
     // Route navigation
     Route::view('/main', 'mainView')->name("main.index");
     Route::view('/Registroentradas', 'Registros.create')->name('registro.create');
     Route::view('/HistorialRegistros', 'registros.index')->name('registro.index');
 
-<<<<<<< HEAD
-//  Routes portatiles
-Route::post('/portatiles', [PortatilController::class,'store'])->name('portatil.store');
-=======
     // Routes Usuarios
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuario.index');
     Route::post('/buscar.usuario', [UsuarioController::class, 'buscarByDocumento'])->name('usuario.buscar');
@@ -72,7 +65,15 @@ Route::post('/portatiles', [PortatilController::class,'store'])->name('portatil.
 
     // Route Complementos
     Route::get('/complementos/roles', [RolController::class, 'index'])->name('rol.index');
+    Route::post('/rol/create',[RolController::class,'store'])->name('rol.store');
+    Route::post('/rol/update',[RolController::class,'update'])->name('rol.update');
+    Route::delete('/rol/{id}/destroy',[RolController::class,'destroy'])->name('rol.destroy');
+
     Route::get('/complementos/tipoDocumento', [tipoDocumentoController::class, 'index'])->name('tipoDocumento.index');
+    Route::post('/tipoDocumento/create',[tipoDocumentoController::class,'store'])->name('tipoDocumento.store');
+    Route::post('/tipoDocumento/update',[tipoDocumentoController::class,'update'])->name('tipoDocumento.update');
+    Route::delete('/tipoDocumento/{id}/destroy',[tipoDocumentoController::class,'destroy'])->name('tipoDocumento.destroy');
 
 });
->>>>>>> 4fc8dbaedf16577683c3992b978495035854bf6d
+
+
