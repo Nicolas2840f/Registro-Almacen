@@ -13,7 +13,8 @@ class RegistroController extends Controller
      */
     public function index()
     {
-        //
+        $registros = Registro::all();
+        return view('Registros.index', ['registros' => $registros]);
     }
 
     /**
@@ -38,7 +39,7 @@ class RegistroController extends Controller
 
         if ($lastRegistro && $lastRegistro->fechaSalidaRegistro == null) {
             return redirect()->route('registro.create')->withErrors([
-                'documentoUsuario'=> 'No hay registro de ultima salida',
+                'documentoUsuario' => 'No hay registro de ultima salida',
             ]);
         }
 
@@ -52,12 +53,42 @@ class RegistroController extends Controller
 
     }
 
+    public function buscarByDocument(Request $request)
+    {
+
+
+        $registros = Registro::join('usuarios', 'registros.usuario', '=', 'usuarios.idUsuario')
+            ->join('portatiles','registros.portatil','=','portatiles.idPortatil')
+            ->where('usuarios.' . $request->input, 'like', '%' . $request->value . '%')
+            ->get(['registros.*', 'usuarios.*', 'portatiles.*']);
+
+        $html = '';
+
+        if ($registros->count() > 0) {
+            foreach ($registros as $registro) {
+                $html .= '<tr>';
+
+                $html .= '<td>' . $registro->nombreUsuario . '</td>';
+                $html .= '<td>' . $registro->marcaPortatil . ' --- ' . $registro->marcaPortatil . '</td>';
+                $html .= '<td>' . $registro->fechaIngresoRegistro . '</td>';
+                $html .= '<td>' . $registro->fechaSalidaRegistro . '</td>';
+                $html .= '</tr>';
+            }
+        } else {
+            $html .= '<tr>';
+            $html .= '<td colspan="4">No results</td>';
+            $html .= '</tr>';
+        }
+
+        return json_encode($html, JSON_UNESCAPED_UNICODE);
+
+    }
+
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -85,7 +116,7 @@ class RegistroController extends Controller
 
         if ($lastRegistro && $lastRegistro->fechaIngresoRegistro != null && $lastRegistro->fechaSalidaRegistro != null) {
             return redirect()->route('registro.create')->withErrors([
-                'documentoUsuario'=> 'No hay registro de ingreso',
+                'documentoUsuario' => 'No hay registro de ingreso',
             ]);
         }
 
