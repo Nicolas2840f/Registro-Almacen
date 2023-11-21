@@ -52,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/buscar.usuario', [UsuarioController::class, 'buscarByDocumento'])->name('usuario.buscar');
     Route::view('/edit', 'usuarios.update')->name('user.edit');
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('user.logout');
+    Route::post('/Usuario/buscar', [UsuarioController::class, 'buscarByDocument'])->name('user.search');
 
     //  Routes portatiles
     Route::view('/portatiles/create', 'Portatiles.create')->name('portatil.create');

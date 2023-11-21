@@ -106,7 +106,7 @@ class RegistroController extends Controller
                         <hr class="border-gray-800 m-1">
                         <span class="comic-text w-fit text-left">
                             <b>Correo:</b> <br>
-                            ' . $registro->correoUsuario . '
+                            ' . $registro->email . '
                         </span>
                     </div>
                 </td>';
