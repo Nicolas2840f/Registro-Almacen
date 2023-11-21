@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Routes Usuarios
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuario.index');
-    Route::post('/buscar.usuario', [UsuarioController::class, 'buscarByDocumento'])->name('usuario.buscar');
+    Route::post('/usuarios/buscar', [UsuarioController::class, 'buscarByDocumento'])->name('usuario.buscar');
     Route::view('/edit', 'usuarios.update')->name('user.edit');
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('user.logout');
 
