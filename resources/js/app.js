@@ -1,9 +1,4 @@
 import './bootstrap';
-const formulario = document.forms["fLogin"];
-const documento = document.getElementById("fDocumento");
-const password = document.getElementById("fPassword");
-
-
 
 var button = document.querySelector('.button')
 var ventana = document.querySelector('.ventana')
@@ -57,4 +52,6 @@ function realizarBusqueda(input) {
 
 }
 
-realizarBusqueda(input)
+realizarBusqueda(input);
+
+

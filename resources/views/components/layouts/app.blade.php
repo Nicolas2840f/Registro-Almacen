@@ -7,10 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="{{ $metaDescription ?? 'Default meta description' }}">
     <title>{{ $title ?? 'Defaul title' }}</title>
-    @vite(['resources/css/app.scss', 'resources/js/app.js'])
+    @vite('resources/css/app.scss')
+    @if (request()->routeIs('usuario.index'))
+        @vite('resources/js/buscar.js')
+    @else
+        @vite('resources/js/app.js')
+    @endif
+
+
 </head>
 <x-layouts.navigation />
 {{ $slot }}
-<x-layouts.Modal/>
+<x-layouts.Modal />
 
 </html>
