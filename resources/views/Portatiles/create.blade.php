@@ -1,8 +1,8 @@
 <x-layouts.app title="Portatiles" meta-description="CRUD para Portatiles">
 
     <body style="background: #075985">
-        <div style="height: calc(83% - 4rem)" class="w-full justify-center flex">
-            <div class="my-20 flex bg-slate-50 w-4/5 h-full rounded-lg principal">
+        <div class="w-full justify-center flex ">
+            <div class="flex my-20 bg-slate-50 w-4/5 h-full rounded-lg principal">
                 <div class="w-1/2 flex items-center justify-center">
                     <img class="w-4/5" src="/Imagenes/icono-pc.png" alt="pc">
                 </div>

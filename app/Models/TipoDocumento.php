@@ -9,5 +9,7 @@ class TipoDocumento extends Model
 {
     protected $guarded = [];
     protected $table = "tipoDocumentos";
+    protected $primaryKey = 'idTipoDocumento';
+    
     use HasFactory;
 }

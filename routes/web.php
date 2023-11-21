@@ -67,7 +67,13 @@ Route::middleware(['auth'])->group(function () {
 
     // Route Complementos
     Route::get('/complementos/roles', [RolController::class, 'index'])->name('rol.index');
+    Route::post('/rol/create',[RolController::class,'store'])->name('rol.store');
+    Route::post('/rol/update',[RolController::class,'update'])->name('rol.update');
+    Route::delete('/rol/{id}/destroy',[RolController::class,'destroy'])->name('rol.destroy');
+
     Route::get('/complementos/tipoDocumento', [tipoDocumentoController::class, 'index'])->name('tipoDocumento.index');
+    Route::post('/tipoDocumento/create',[tipoDocumentoController::class,'store'])->name('tipoDocumento.store');
+    Route::post('/tipoDocumento/update',[tipoDocumentoController::class,'update'])->name('tipoDocumento.update');
+    Route::delete('/tipoDocumento/{id}/destroy',[tipoDocumentoController::class,'destroy'])->name('tipoDocumento.destroy');
 
 });
-
