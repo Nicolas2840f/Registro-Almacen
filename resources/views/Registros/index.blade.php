@@ -35,7 +35,7 @@
             position: relative;
         }*/
 
-        span#spanDocumento:hover+.comic-box {
+        span#spanLabel:hover+.comic-box {
             display: flex;
         }
     </style>
@@ -54,9 +54,9 @@
                     <input id="fechaIngresoRegistro" name="fechaIngresoRegistro"
                         class="w-[30px] h-4/5 text-[30px] flex items-center" type="date">
                 </div>
-                <div class="tabless w-full h-[90%] max-h-[90%] overflow-auto pt-6">
+                <div class="tabless w-full h-[90%] min-h-[80%] overflow-auto pt-6">
                     <table class="w-full min-w-full h-fit text-center shadow">
-                        <thead class="sticky top-0 bg-gray-300">
+                        <thead class="sticky top-0 bg-gray-300 z-50">
                             <tr>
                                 <th>Usuario</th>
                                 <th>Portatil</th>
@@ -64,28 +64,7 @@
                                 <th>Fecha Salida</th>
                             </tr>
                         </thead>
-                        <tbody id="TBodyRegistros">
-                            <tr>
-                                <td class="relative grid place-content-center">
-                                    <span id="spanDocumento">1101752630</span>
-                                    <div
-                                        class="comic-box whitespace-nowrap flex flex-col absolute bg-white p-5 shadow-xl max-w-[400px] min-w-fit top-12 z-50">
-                                        <div
-                                            class="arrow-down absolute -top-5 left-2/4 -translate-x-2/4 w-0 h-0 border-transparent border-solid border-l-[20px] border-r-[20px] border-b-white border-b-[20px]">
-                                        </div>
-                                        <span class="comic-text bg-green-400 w-fit">
-                                            <b>Nombre:</b>
-                                            Cristian Fernando Morales Diaz
-                                        </span>
-                                        <span class="comic-text"><strong>Documento:</strong> _____</span>
-                                        <span class="comic-text"><strong>Teléfono:</strong> _____</span>
-                                        <span class="comic-text"><strong>Correo:</strong> _____</span>
-                                    </div>
-                                </td>
-                                <td>Hp --- Hp</td>
-                                <td>2023-11-17 23:11:56</td>
-                                <td>2023-11-17 23:22:09</td>
-                            </tr>
+                        <tbody id="TBodyRegistros" class="min-w-[25px]">
                         </tbody>
                     </table>
                 </div>

@@ -45,7 +45,7 @@ Route::middleware(['auth'])->group(function () {
     // Route navigation
     Route::view('/main', 'mainView')->name("main.index");
     Route::view('/Registroentradas', 'Registros.create')->name('registro.create');
-    Route::view('/HistorialRegistros', 'registros.index')->name('registro.index');
+    // Route::view('/HistorialRegistros', 'registros.index')->name('registro.index');
 
     // Routes Usuarios
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuario.index');

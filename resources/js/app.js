@@ -45,7 +45,7 @@ function realizarBusqueda(input) {
 
             var registros = JSON.parse(xhr.responseText);
 
-            // TBodyRegistros.innerHTML = registros
+            TBodyRegistros.innerHTML = registros
         } else {
             console.error('Error en la solicitud. Código de estado: ' + xhr.status);
         }
