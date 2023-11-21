@@ -30,11 +30,7 @@
                             placeholder="Confirmar contraseña" name="password_confirmation">
                         <button
                             class="w-5/6 p-3 rounded-md m-2 bg-sky-200 font-medium hover:text-slate-50 hover:bg-sky-800"
-<<<<<<< HEAD
                             type="submit">Crear</button>
-=======
-                            type="submit">Registrar</button>
->>>>>>> 6512aa09c6d5f91bacf429b165e74ef1492da772
                         <div class="w-full text-slate-50 links">
                             <a href="{{ route('reset') }}" class="hover:underline hover:text-sky-100">¿Perdiste tu
                                 Contraseña?</a>

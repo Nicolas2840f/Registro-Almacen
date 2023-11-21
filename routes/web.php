@@ -62,9 +62,12 @@ Route::middleware(['auth'])->group(function () {
     // Route Registro
     Route::post('/registro', [RegistroController::class, 'store'])->name('registro.store');
     Route::post('/registro/update', [RegistroController::class, 'update'])->name('registro.update');
+    Route::get('/Registros', [RegistroController::class, 'index'])->name('registro.index');
+    Route::post('/Registro/buscar', [RegistroController::class, 'buscarByDocument'])->name('registro.buscar');
 
     // Route Complementos
     Route::get('/complementos/roles', [RolController::class, 'index'])->name('rol.index');
     Route::get('/complementos/tipoDocumento', [tipoDocumentoController::class, 'index'])->name('tipoDocumento.index');
 
 });
+
