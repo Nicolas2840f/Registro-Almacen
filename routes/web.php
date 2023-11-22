@@ -50,9 +50,10 @@ Route::middleware(['auth'])->group(function () {
     // Routes Usuarios
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuario.index');
     Route::post('/usuarios/buscar', [UsuarioController::class, 'buscarByDocumento'])->name('usuario.buscar');
-    Route::view('/edit', 'usuarios.update')->name('user.edit');
+    Route::get('/edit', [UsuarioController::class, 'show'])->name('user.edit');
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('user.logout');
     Route::post('/Usuario/buscar', [UsuarioController::class, 'buscarByDocument'])->name('user.search');
+    Route::post('/editar/{usuario}', [UsuarioController::class, 'update'])->name('usuario.update');
 
     //  Routes portatiles
     Route::view('/portatiles/create', 'Portatiles.create')->name('portatil.create');

@@ -13,7 +13,7 @@
                 </div>
                 <div class="tabless w-full h-[90%] min-h-[80%] overflow-auto pt-6">
                     <table class="w-full min-w-full h-fit text-center shadow">
-                        <thead class="sticky top-0 bg-gray-300 z-50">
+                        <thead class="sticky top-0 bg-gray-300 z-20">
                             <tr>
                                 <th>Tipo de Documento</th>
                                 <th>Documento de Identificación</th>

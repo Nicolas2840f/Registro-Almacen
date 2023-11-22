@@ -1,3 +1,16 @@
+
+var button = document.querySelector('.button')
+var ventana = document.querySelector('.ventana')
+// var
+
+
+button.addEventListener('click', () => {
+    button.classList.toggle('active')
+    ventana.classList.toggle('active')
+})
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     animarElementos();
 });

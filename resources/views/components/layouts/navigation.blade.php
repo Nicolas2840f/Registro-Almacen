@@ -12,7 +12,7 @@
                 <span class="line relative w-[70%] h-[4px] bg-black rounded"></span>
             </div>
             <div
-                class="ventana fixed -right-64 top-[8%] bg-white p-4 opacity-0 invisible rounded-tl-lg rounded-bl-lg w-fit">
+                class="ventana fixed z-50 -right-64 top-[8%] bg-white p-4 opacity-0 invisible rounded-tl-lg rounded-bl-lg w-fit">
                 <hr>
                 <span class="block w-full text-lg">{{ Auth::user()->rol->descripcionRol }}</span>
                 <span class="block w-full text-xl">{{ Auth::user()->nombreUsuario }}</span>

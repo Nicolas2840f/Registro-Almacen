@@ -9,6 +9,7 @@ use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\Rules;
 
 
 class UsuarioController extends Controller
@@ -42,9 +43,12 @@ class UsuarioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        $tipoDocumentoController = new tipoDocumentoController();
+        $tiposDocumento = $tipoDocumentoController->show();
+
+        return view('usuarios.update', ['tipoDocumentos' => $tiposDocumento]);
     }
 
     /**
@@ -58,9 +62,20 @@ class UsuarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Usuario $usuario)
     {
-        //
+        $validated = $request->validate([
+            // 'tipoDocumentoUsuario' => ['required', 'string'],
+            'documentoUsuario' => ['required', 'string', 'min:7', 'unique:usuarios'],
+            'nombreUsuario' => ['required', 'string', 'max:100'],
+            'telefonoUsuario' => ['required', 'string', 'max:10', 'min:10', 'unique:usuarios'],
+            'email' => ['required', 'string', 'email', 'unique:usuarios'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $usuario->update($validated);
+
+        return to_route('main.index')->with('status', 'Perfil editado');
     }
 
     /**
@@ -82,7 +97,7 @@ class UsuarioController extends Controller
 
         $usuario = Usuario::where('documentoUsuario', 'like', '%' . $request->documentoUsuarioS . '%')->first();
 
-        if(!isset($usuario)){
+        if (!isset($usuario)) {
             throw ValidationException::withMessages([
                 'documentoUsuarioS' => 'Usuario no encontrado',
             ]);
@@ -92,7 +107,7 @@ class UsuarioController extends Controller
         $portatiles = Portatil::where('usuario', $usuario->idUsuario)->get();
         $registros = Registro::where('usuario', $usuario->idUsuario)->orderBy('idRegistro', 'desc')->get();
 
-        return view('Registros.create')->with(['usuario' => $usuario, 'portatiles'=> $portatiles, 'registros'=> $registros]);
+        return view('Registros.create')->with(['usuario' => $usuario, 'portatiles' => $portatiles, 'registros' => $registros]);
 
     }
     public function buscarByDocument(Request $request)
@@ -102,7 +117,7 @@ class UsuarioController extends Controller
 
 
         $usuarios = Usuario::join('tipoDocumentos', 'usuarios.tipoDocumentoUsuario', '=', 'tipoDocumentos.idTipoDocumento')
-            ->where('documentoUsuario', 'like' ,'%'. $request->value.'%')
+            ->where('documentoUsuario', 'like', '%' . $request->value . '%')
             ->get(['usuarios.*', 'tipoDocumentos.*']);
 
         $html = '';
@@ -136,8 +151,8 @@ class UsuarioController extends Controller
                 $html .= '<td>' . $usuario->descripcionTipoDocumento . '</td>';
                 $html .= '<td>' . $usuario->documentoUsuario . '</td>';
                 $html .= '<td>' . $usuario->nombreUsuario . '</td>';
-                $html .=  '<td>' . $usuario->telefonoUsuario . '</td>';
-                $html .=  '<td>' . $usuario->email. '</td>';
+                $html .= '<td>' . $usuario->telefonoUsuario . '</td>';
+                $html .= '<td>' . $usuario->email . '</td>';
                 $html .= '</tr>';
 
 

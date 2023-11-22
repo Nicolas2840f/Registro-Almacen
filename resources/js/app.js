@@ -1,15 +1,5 @@
 import './bootstrap';
 
-var button = document.querySelector('.button')
-var ventana = document.querySelector('.ventana')
-// var
-
-
-button.addEventListener('click', () => {
-    button.classList.toggle('active')
-    ventana.classList.toggle('active')
-})
-
 
 var input = document.getElementById('DocumentoUsuario')
 var TBodyRegistros = document.getElementById('TBodyRegistros')
@@ -47,7 +37,7 @@ function realizarBusqueda(input) {
     };
 
     // Puedes enviar datos en el cuerpo de la solicitud
-    var data = 'input=' + encodeURIComponent(input.name) + '&value=' + encodeURIComponent(valorABuscar);
+    var data = 'input=' + encodeURIComponent(input.name) + '&value=' + encodeURIComponent(valorABuscar) + "&table=" + input.getAttribute('data-table');
     xhr.send(data);
 
 }

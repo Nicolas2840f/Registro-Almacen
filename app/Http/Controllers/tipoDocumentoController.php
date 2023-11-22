@@ -69,4 +69,11 @@ class tipoDocumentoController extends Controller
         return redirect()->route('tipoDocumento.index')->with('status', 'Documento Eliminado con éxito');
     }
 
+    public function show()
+    {
+        $tipoDocumentos = DB::table("tipoDocumentos")->get();
+
+        return $tipoDocumentos;
+    }
+
 }
