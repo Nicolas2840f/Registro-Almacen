@@ -60,7 +60,7 @@ class PortatilController extends Controller
                 "usuario" => $user->idUsuario,
             ]);
 
-            return redirect()->route("registro.registrar")->with("status", "Portatil Registrado Exitosamente");
+            return redirect()->route("registro.create")->with("status", "Portatil Registrado Exitosamente");
         } else {
             return back()->withInput()->withErrors(['usuario' => 'El usuario no está registrado']);
         }

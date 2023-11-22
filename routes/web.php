@@ -54,6 +54,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('user.logout');
     Route::post('/Usuario/buscar', [UsuarioController::class, 'buscarByDocument'])->name('user.search');
     Route::post('/editar/{usuario}', [UsuarioController::class, 'update'])->name('usuario.update');
+    Route::post('/usuario/editar', [UsuarioController::class, 'edit'])->name('usuario.edit');
+    Route::get('/usuarios/editar', [UsuarioController::class, 'store'])->name('usuarios.listar');
 
     //  Routes portatiles
     Route::view('/portatiles/create', 'Portatiles.create')->name('portatil.create');

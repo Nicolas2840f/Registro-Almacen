@@ -66,10 +66,10 @@ class UsuarioController extends Controller
     {
         $validated = $request->validate([
             // 'tipoDocumentoUsuario' => ['required', 'string'],
-            'documentoUsuario' => ['required', 'string', 'min:7', 'unique:usuarios'],
+            'documentoUsuario' => ['required', 'string', 'min:7'],
             'nombreUsuario' => ['required', 'string', 'max:100'],
-            'telefonoUsuario' => ['required', 'string', 'max:10', 'min:10', 'unique:usuarios'],
-            'email' => ['required', 'string', 'email', 'unique:usuarios'],
+            'telefonoUsuario' => ['required', 'string', 'max:10', 'min:10'],
+            'email' => ['required', 'string', 'email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 

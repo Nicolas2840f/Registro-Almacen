@@ -19,7 +19,7 @@ function realizarBusqueda2(input2) {
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
             var usuarios = JSON.parse(xhr.responseText);
-
+            // console.log(usuarios);
             TBodyUsuarios.innerHTML = usuarios;
         } else {
             console.error(

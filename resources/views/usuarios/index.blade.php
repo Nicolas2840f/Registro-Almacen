@@ -1,4 +1,6 @@
 <x-layouts.app title="Usuarios" meta-description="Historial de Usuarios">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
     <body style="background: #075985">
         <div style="height:calc(100% - 4rem);" class="main flex flex-col w-full p-10">
             <div class="title w-full h-[10%] flex items-center justify-center">
@@ -28,9 +30,6 @@
                 </div>
             </div>
         </div>
-        <script>
-            var csrfToken = "{{ csrf_token() }}";
-        </script>
     </body>
 </x-layouts.app>
 
