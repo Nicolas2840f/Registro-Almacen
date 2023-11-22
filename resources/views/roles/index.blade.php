@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="w-1/2">
-                    <table class="table-auto border border-slate-400 border-spacing-2 bg-slate-150">
+                    <table class="border-slate-400 bg-slate-150">
                         <tr class="text-center bg-slate-200">
                             <td class="w-1/6  font-bold">Id</td>
                             <td class="w-1/3  font-bold">Descripción</td>
@@ -42,7 +42,7 @@
                                     <td class="w-1/6 text-center font-medium"><input class="w-1/5 bg-slate-50" type="number" value="{{ $rol->idRol }}" name="idRol" readonly></td>
                                     <td class="w-1/3 font-medium"><input class="w-full text-center bg-slate-50" type="text" value="{{ $rol->descripcionRol }}" name="descripcion">
                                     </td>
-                                    <td class="font-bold text-slate-950 flex w-full">
+                                    <td class="font-bold text-slate-950 flex w-full border-none">
                                         <button class="bg-sky-800 m-1 p-1 rounded-md w-1/2 text-slate-50 font-semibold hover:bg-sky-950" type="submit">Modificar</button>
                                 </form>
                                 <form class="w-1/2 m-1" action="{{ route('rol.destroy', $rol->idRol) }}" method="POST">

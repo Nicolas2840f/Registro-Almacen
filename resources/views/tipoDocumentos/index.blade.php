@@ -42,7 +42,7 @@
                                     <td class="w-1/6 text-center font-medium"><input class="w-1/5 bg-slate-50" type="number" value="{{ $tipoDocumento->idTipoDocumento }}" name="idTipoDocumento" readonly></td>
                                     <td class="w-1/3 font-medium"><input class="w-full text-center bg-slate-50" type="text" value="{{ $tipoDocumento->descripcionTipoDocumento }}" name="descripcion">
                                     </td>
-                                    <td class="font-bold text-slate-950 flex w-full">
+                                    <td class="font-bold text-slate-950 flex w-full border-none">
                                         <button class="bg-sky-800 m-1 p-1 rounded-md w-1/2 text-slate-50 font-semibold hover:bg-sky-950" type="submit">Modificar</button>
                                 </form>
                                 <form class="w-1/2 m-1" action="{{ route('tipoDocumento.destroy', $tipoDocumento->idTipoDocumento) }}" method="POST">
